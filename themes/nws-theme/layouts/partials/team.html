@@ -1,0 +1,12 @@
+<article class="col-lg-4 col-sm-6 mb-4 d-flex align-items-center flex-column">
+
+  <img class="rounded-circle card-img-top border-blue team-image" src="{{.Params.Picture | relURL}}"
+       alt="{{.Params.Name }}">
+
+  <div class="card-body text-center">
+    <h4 class="card-title mb-0">
+      <a href="{{.Permalink}}" class="color-grey">{{.Params.Name }}</a>
+    </h4>
+    <p class="cars-text"> {{.Params.Role}} </p>
+  </div>
+</article>

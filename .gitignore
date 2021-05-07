@@ -1,0 +1,9 @@
+### Hugp
+/public/
+/resources/_gen/
+
+### macOS
+.DS_Store
+.idea
+/node_modules/
+/public_html/

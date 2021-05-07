@@ -1,0 +1,132 @@
+{{ define "main" }}
+
+  <!-- hero area -->
+  <section class="hero-area overflow-hidden d-flex align-items-center" id="parallax" style="background-image: url('{{ .Params.banner.image | absURL }}')">
+  </section>
+  <!-- /hero area -->
+  
+{{ partial "components/page-title" (dict "context" . "title" .Params.banner.title "subtitle" .Params.banner.subtitle ) }}
+
+  {{ if .Params.about.enable }}
+    <!-- about -->
+    {{ partial "components/page-introduction-up" (dict "context" . "title" .Params.about.title "content" .Params.about.content "image" .Params.about.image  ) }}
+  {{ end }}
+
+
+  <!-- Nos cursus -->
+  {{ if .Params.cursus.enable }}
+  {{ with .Params.cursus }}
+  <section class="pt-5 bg-lightgrey clip-bottom-white overflow-hidden "  id="cursus">
+    <div class="container">
+      {{ partial "components/wavy-title" (dict "context" . "title" "Nos formations") }}
+
+      <div class="row">
+        {{ range .item }}
+          <div class="col-md-12 col-lg-4 mb-4">
+            <div class="card center-card {{ .color }} h-lg-80">
+              <div class="card-header">
+                <h3 class="title-medium {{.color}}">{{.title}}</h3>
+              </div>
+
+              <div>
+                <div class="card-body mb-200">
+                  <p>
+                    {{.content | safeHTML}}
+                  </p>
+
+                  <div class="cursus-info">
+                    <ul class="my-3 {{ .color }} pl-0">
+                      <li>[ {{.from}} ]</li>
+                    </ul>
+    
+                    <div class="logo d-flex justify-content-around">
+                      {{ range .images }}
+                        <img src="{{.url}}" alt="{{.alt}}">
+                      {{ end }}
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center mb-4">
+            <a title="Inscription" href="{{ .Site.BaseURL }}/inscription/" class="btn font-weight-medium color-blue mt-5 py-3 px-4">Demande d'inscription</a>
+        </div>
+          </div>
+        {{ end }}
+      </div>
+      <img src="/uploads/points.svg" class="points">
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+
+
+<!-- filieres -->
+  {{ if .Params.filieres.enable }}
+  {{ with .Params.filieres }}
+  <section class="bg-white section clip-bottom-lightgrey" id="cursus-filieres">
+    <div class="container pb-5 mb-5">
+      <div class="row">
+        <div class="col-12 text-center text-lg-left">
+          <h3 class="title-medium with-separator-lg-left color-orange">{{ .title }}</h3>
+          <p>{{ .subtitle | safeHTML }}</p>
+        </div>
+
+        <div class="cursus_filieres mt-5 ">
+
+          <img src="{{ `/uploads/arrow-down.svg` | absURL }}" class="arrow-1 d-none d-lg-block"/>
+          <img src="{{ `/uploads/arrow-down.svg` | absURL }}" class="arrow-2 d-none d-lg-block"/>
+
+          {{ range .item }}
+            <div class="row flex-column align-items-center mb-5">
+              {{if .image}}
+              <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="10000">
+                <div class="carousel-inner">
+                  {{ range $index, $value := .specilisation }}
+                    <div class="carousel-item {{ if (eq $index 0 )}}active{{end}}">
+                      <div class="circle mx-auto">
+                        <img src="{{.bulle}}" class="w-50 h-50" />
+                      </div>
+                      <div class="text-center">
+                        <p class="w-lg-100 {{.color}}">{{.title}}</p>
+                        <p class="w-lg-100 my-3">{{.content | safeHTML}}</p>
+                        <a href="{{.link}}" class="mb-5">En savoir plus</a>
+                      </div>
+                    </div>
+                  {{end}}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                  <span class="color-blue"><i class="fa fa-angle-left carousel-arrow" aria-hidden="true"></i></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                  <span class="color-blue"><i class="fa fa-angle-right carousel-arrow" aria-hidden="true"></i></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              {{end}}
+
+              {{if (not .image)}}
+              <h3>{{.bulle}}</h3>
+              <div class="text-center">
+                <p class="w-lg-100">{{.title}}</p>
+                <p class="w-lg-100 my-3">{{.content | safeHTML}}</p>
+                <a href="{{.link}}" class="mb-5">En savoir plus</a>
+              </div>
+              {{end}}
+
+              {{if .arrow}}
+              <img src="{{.arrowImage}}" class="d-block d-lg-none mt-5"/>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+
+    {{ partial "testimonial-section.html" (dict "context" . "filter" (slice "cursus") "padding" "pt-0" ) }}
+{{ end }}

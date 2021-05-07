@@ -1,0 +1,328 @@
+{{ define "main" }}
+
+  <!-- hero area -->
+  <section class="hero-area overflow-hidden d-flex align-items-center " id="parallax" style="background-image: url('{{ .Params.banner.image | absURL }}')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-11 d-none d-lg-block">
+          <h1>{{ .Params.banner.title | safeHTML }}</h1>
+          <h2>{{ .Params.banner.subtitle | safeHTML }}</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /hero area -->
+
+  <section class="bg-lightgrey d-block d-lg-none">
+    <div class="pb-4 container up">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="mb-0 title-medium color-orange separator-left">
+                  {{ .Params.banner.title | safeHTML }}
+                </h3>
+              </div>
+
+              <div class="card-body">
+                <p class="font-weight-medium mb-0">
+                  {{ .Params.banner.subtitle | safeHTML }}
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {{ if .Params.about.enable }}
+    <!-- about -->
+    {{ partial "components/page-introduction" (dict "context" . "title" .Params.about.title "content" .Params.about.content "image" .Params.about.image  ) }}
+  {{ end }}
+
+  
+
+  <!-- filières -->
+  {{ if .Params.filieres.enable }}
+  {{ with .Params.filieres }}
+  <section class="py-5 bg-lightgrey clip-bottom-white c-xl c-up " id="home-filieres">
+    <div class="container">
+      {{ partial "components/wavy-title" (dict "context" . "title" "Nos filières") }}
+
+      <div class="row pl-3 pr-3">
+          <h3 class="text-center with-separator-lg-left text-lg-left title-medium color-orange mt-3">{{ .bachelor_titre | safeHTML }}</h3>
+
+          <p class="pl-3 pr-3 mb-2">{{ .bachelor_description | safeHTML }} </p>
+      </div>
+      <div class="row">
+        {{ range $index, $value := .item }}
+          <div class="col-md-12 col-lg-4 pb-4">
+          <div class="card h-100 center-card with-border {{ .color }} home-filieres">
+            <div class="card-header hide-collapse-desktop" id="heading-{{$index}}" data-toggle="collapse"
+                 data-target="#collapse-{{$index}}" >
+                 
+                 {{ partial "snippets/img-srcset.html" (dict "image" .logo "alt" .title "width" "100")}}
+
+              <h3>
+                {{.title}}
+              </h3>
+              <i class="fas fa-angle-down rotate-icon"></i>
+
+            </div>
+
+            <div id="collapse-{{$index}}" class="collapse show" aria-labelledby="heading-{{$index}}" data-parent="#accordion">
+              <div class="card-body">
+                <p>
+                  {{.content | safeHTML}}
+                </p>
+
+                <div class="filieres-info">
+                  <ul class="from-to-inline mt-3 {{ .color }}">
+                    <li class="w-50 pr-2">{{.from}}</li>
+                    <li class="w-50 pl-2">{{.to}}</li>
+                  </ul>
+
+                  <a class="btn {{ .color }} mt-5 pt-2 pb-2 pl-5 pr-5 mb-10" href="{{.href}}" title="Découvrir">
+                      Découvrir
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <div class="row py-4 mt-5 d-block d-lg-none">
+        <div class="col-12 d-flex justify-content-center">
+          <a href="{{ .Site.BaseURL }}/inscription/" class="btn font-weight-medium color-blue pt-3 pb-3 pl-4 pr-4" title="Demander un entretien pédagogique">Entretien pédagogique</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+  <!-- /filières -->
+
+
+  <!-- Video -->
+  {{ if .Params.video.enable }}
+  {{ with .Params.video }}
+  <section class="my-3 my-lg-5" id="video">
+    <div class="container d-block position-relative text-center">
+      <div class="row video-container">
+        <div class="col-12 col-custom-6 d-flex justify-content-center">
+                
+          <a href="{{ .href }}" target="_blank">
+          <img src="/uploads/NWS_YouTube_Sitapha_Dia.png" alt="NWS Sitapha DIA" width="100%"/>
+          </a>
+                   
+        </div>
+        <div class="col-12 col-custom-6 text-center text-custom-left">
+          <h3 class="title-medium color-orange  with-separator-custom-left">{{ .title }}</h3>
+          {{ .content | safeHTML }}
+          <a class="btn color-orange mt-5 mt-lg-4 mb-3 pt-2 pb-2 pl-5 pr-5 fit d-custom-none" href="{{ .href }}" title="{{.button}}">
+            {{ .button }}
+          </a>
+        </div>
+      </div>
+      <a class="btn color-orange mt-5 mb-3 pt-2 pb-2 pl-5 pr-5 fit d-custom-block" href="{{ .href }}" target="_blank" title="{{.button}}">
+        {{ .button }}
+      </a>
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+
+  {{ if .Params.cursus.enable }}
+  {{ with .Params.cursus }}
+  <section class='overflow-hidden'>
+    <div class="container d-block position-relative" id="cursus">
+      <div class="row">
+        <div class="col-12 text-center text-lg-left mt-5 lg-absolute">
+          <h3 class="title-medium color-orange  with-separator-lg-left">{{ .title }}</h3>
+          <p>{{ .subtitle }}</p>
+          <a title="En savoir plus" class="btn color-orange mt-5 mt-lg-4 mb-3 pt-2 pb-2 pl-5 pr-5 d-none fit d-lg-block" href="/cursus">
+            En savoir plus
+          </a>
+
+        </div>
+
+        <img
+          src="/uploads/assets/infographie-cursus-desktop.svg"
+          class="d-none d-lg-block mt-lg-5"
+          style="margin: 0 auto; margin-left: -10%; width: 120%"
+          alt="Cursus à la Normandie Web School"
+        >
+
+        <div class="col-12 mt-4 d-flex">
+          <img
+            src="/uploads/assets/infographie-cursus-tab.svg"
+            class="d-none d-md-block d-lg-none mt-lg-5"
+            style="width: 120%"
+            alt="Cursus à la Normandie Web School"
+          >
+        </div>
+
+        <div class="col-12 mt-4 d-flex">
+          <img
+            src="/uploads/assets/infographie-cursus-mobile.svg"
+            class="d-block d-md-none"
+            style="margin: 0 auto; width: 90%"
+            alt="Cursus à la Normandie Web School">
+        </div>
+      </div>
+
+      <div class="row d-block d-lg-none">
+        <div class="col-12 d-flex justify-content-center mt-4">
+          <a title="Découvrir les cursus à la NWS" href="{{ .Site.BaseURL }}/cursus/" class="btn font-weight-medium color-orange mt-5 mb-3 pt-3 pb-3 pl-4 pr-4">Découvrir tous nos cursus</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+
+
+
+  {{ if .Params.reasons.enable }}
+  {{ with .Params.reasons }}
+  <!-- reasons -->
+  <section class="section bg-lightgrey clip-top-white" id="reasons">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-12 text-center">
+          <div class="card center-card with-border {{ .color }}">
+            <h3 class="title-medium color-blue mb-0">{{ .title | safeHTML }}</h3>
+            <p>{{ .subtitle | markdownify }}</p>
+            <div class="card-body d-lg-flex">
+              {{ range .item }}
+              <div class="mt-4 mt-lg-0 w-lg-20 px-2">
+                <img src="{{ .logo }}" alt="{{.alt}}" class="mt-4">
+                <p class="mt-4 mr-md-5 ml-md-5 mr-lg-1 ml-lg-1 mt-lg-3">{{.content}}</p>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /reasons -->
+  {{ end }}
+  {{ end }}
+
+  {{ if .Params.data.enable }}
+  {{ with .Params.data }}
+  <!-- reasons -->
+  <div class="mb-lg-0 pb-5 bg-lightgrey">
+    <div class="container">
+        {{ partial "components/wavy-title" (dict "context" . "title" .title) }}
+      <div class="row">
+            {{ range .item }}
+        <div class="col-md-12 col-lg-3 text-center">
+            <div class="">
+              <span class="big-number color-orange">{{.number}}</span>
+              <p class="number-desc font-weight-bold">- {{.title}} -</p>
+            </div>
+        </div>
+            {{ end }}
+      </div>
+    </div>
+  </div>
+  <!-- /reasons -->
+  {{ end }}
+  {{ end }}
+
+{{ if .Params.team.enable }}
+  <!-- Team -->
+  <section class="bg-lightgrey clip-bottom-white" id="home-team">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header d-flex justify-content-center">
+              <h3 class="mb-0 text-center color-blue title-medium">
+                {{.Params.team.title}}
+              </h3>
+            </div>
+
+            <div>
+              <div class="card-body">
+                <p class="d-block d-lg-none text-center"> {{ .Params.team.content }}</p>
+                {{partial "getTeams.html" . }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+{{ if .Params.partners.enable }}
+  <!-- Team -->
+  <section class="clip-bottom-lightgrey section">
+    <div class="container mb-5">
+      <div class="row">
+        <div class="col-md-12">
+              <h3 class="text-center with-separator-lg-left text-lg-left title-medium color-orange my-5">
+                {{.Params.partners.title}}
+              </h3>
+
+                {{ $partners := where .Site.RegularPages "Type" "in" "partner" }}
+            <div class="row d-flex align-items-center justify-content-center">
+              {{ range $partners }}
+                {{ partial "partner.html" . }}
+              {{ end }}
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+{{ if .Params.testimonials.enable }}
+  <!-- Team -->
+  <div class="bg-lightgrey section pt-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div style="margin:5%">
+
+          {{ $testimonials := where .Site.RegularPages "Type" "in" "testimonial" }}
+
+          <div id="testimonialsCarousel" class="carousel slide pb-5" data-ride="carousel" data-interval="20000">
+            <ol class="carousel-indicators">
+              {{ range $index, $value := $testimonials }}
+              <li data-target="#testimonialsCarousel" data-slide-to="{{$index}}" class="{{ if (eq $index 0 )}}active{{end}}"></li>
+              {{end}}
+            </ol>
+
+            <div class="carousel-inner">
+              {{ range $index, $value := $testimonials }}
+                <div class="carousel-item {{ if (eq $index 0 )}}active{{end}}">
+                  {{ partial "testimonial.html" . }}
+                </div>
+              {{ end }}
+            </div>
+
+            <a class="carousel-control-prev" href="#testimonialsCarousel" role="button" data-slide="prev">
+              <span class="color-blue" style="position: absolute;top: 160px;"><i class="fa fa-angle-left carousel-arrow" aria-hidden="true"></i></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialsCarousel" role="button" data-slide="next">
+              <span class="color-blue" style="position: absolute;top: 160px;"><i class="fa fa-angle-right carousel-arrow" aria-hidden="true"></i></span>
+              <span class="sr-only">Next</span>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ end }}

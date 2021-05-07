@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+  <!-- hero area -->
+  <section class="hero-area overflow-hidden d-flex align-items-center" id="parallax" style="background-image: url('{{ .Params.banner.image | absURL }}')">
+  </section>  
+  <!-- /hero area -->
+  
+{{ partial "components/page-title" (dict "context" . "title" .Params.banner.title "subtitle" .Params.banner.subtitle ) }}
+
+  {{ if .Params.about.enable }}
+    <!-- about -->
+    {{ partial "components/page-introduction-up" (dict "context" . "title" .Params.about.title "content" .Params.about.content "image" .Params.about.image ) }}
+  {{ end }}
+    <!-- /about -->
+  
+  {{ if .Params.conditions.enable }}
+    <!-- conditions -->
+    {{ partial "components/page-introduction" (dict "context" . "title" .Params.conditions.title "content" .Params.conditions.content "image" .Params.conditions.image) }}
+  {{ end }}
+    <!-- /conditions -->
+
+  {{ if .Params.financement.enable }}
+    <!-- financement -->
+    {{ partial "components/page-introduction" (dict "context" . "title" .Params.financement.title "content" .Params.financement.content "image" .Params.financement.image) }}
+  {{ end }}
+    <!-- /financement -->
+
+    {{ partial "testimonial-section.html" (dict "context" . "filter" (slice "cursus") "padding" "pt-0" ) }}
+{{ end }}

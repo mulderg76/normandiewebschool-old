@@ -1,0 +1,115 @@
+---
+label: page-documentation
+hide_body: true
+fields:
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
+- type: datetime
+  name: date
+  label: date
+- type: field_group
+  name: banner
+  label: Bannière
+  fields:
+  - type: text
+    name: title
+    label: Titre
+  - type: text
+    name: title-line-twho
+    label: Titre ligne 2
+    hidden: true
+  - type: text
+    name: subtitle
+    label: Sous Titre
+  - type: file
+    name: image
+    label: Image de fond
+- type: field_group
+  name: documents
+  label: Documents
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: Titre
+  - type: textarea
+    name: subtitle
+    label: Description
+    config:
+      wysiwyg: true
+      schema:
+        format: html-blocks
+  - type: field_group_list
+    name: document
+    label: Documents
+    fields:
+    - type: file
+      name: icon
+      label: Icône
+    - type: text
+      name: name
+      label: Nom du document
+    - type: text
+      name: format
+      label: Format du document
+      default: PDF
+    - name: document
+      type: file
+      config:
+        maxSize: 64
+      label: Document
+- type: field_group
+  name: form
+  label: form
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: subtitle
+    label: subtitle
+  - type: boolean
+    name: enable
+    label: enable
+  - type: field_group_list
+    name: input
+    label: input
+    fields:
+    - type: file
+      name: icon
+      label: icon
+    - type: text
+      name: placeholder
+      label: placeholder
+    - type: text
+      name: type
+      label: type
+    - type: boolean
+      name: required
+      label: required
+    - type: text
+      name: name
+      label: name
+    - type: text
+      name: width
+      label: width
+  - type: field_group_list
+    name: checkbox
+    label: checkbox
+    fields:
+    - type: textarea
+      name: content
+      label: content
+    - type: boolean
+      name: required
+      label: required
+    - type: text
+      name: name
+      label: name
+pages:
+- content/documentation/_index.md

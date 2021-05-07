@@ -1,0 +1,100 @@
+---
+label: page-contact
+hide_body: true
+fields:
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
+- type: datetime
+  name: date
+  label: date
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+  - type: file
+    name: image
+    label: image
+- type: field_group
+  name: form
+  label: Formulaire & Informations
+  fields:
+  - name: button_text
+    type: text
+    config:
+      required: false
+    label: Texte du bouton (formulaire)
+  - name: inscription_button_text
+    type: text
+    config:
+      required: false
+    label: Texte du bouton (inscription)
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: field_group_list
+    name: input
+    label: input
+    fields:
+    - type: file
+      name: icon
+      label: icon
+    - type: text
+      name: placeholder
+      label: placeholder
+    - type: text
+      name: type
+      label: type
+    - type: boolean
+      name: required
+      label: required
+    - type: text
+      name: name
+      label: name
+    - type: text
+      name: width
+      label: width
+  - type: field_group_list
+    name: checkbox
+    label: checkbox
+    fields:
+    - type: textarea
+      name: content
+      label: content
+    - type: boolean
+      name: required
+      label: required
+    - type: text
+      name: name
+      label: name
+  - type: field_group_list
+    name: item
+    label: Informations d'ouverture
+    fields:
+    - type: file
+      name: image
+      label: image
+    - type: text
+      name: info
+      label: info
+    - name: subInfo
+      type: text
+      config:
+        required: false
+      label: Information complémentaire
+pages:
+- content/contact/_index.md

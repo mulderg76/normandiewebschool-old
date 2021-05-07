@@ -1,0 +1,183 @@
+---
+label: page-filiere-unique
+hide_body: true
+display_field: title
+fields:
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
+- type: text
+  name: type
+  label: type
+  hidden: true
+- type: text
+  name: layout
+  label: layout
+  hidden: true
+- type: datetime
+  name: date
+  label: date
+  hidden: true
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: file
+    name: logo
+    label: logo
+  - type: text
+    name: title
+    label: title
+  - type: file
+    name: image
+    label: image
+  - type: textarea
+    name: description
+    label: description
+    config:
+      wysiwyg: true
+      schema:
+        format: html-blocks
+  - type: text
+    name: color
+    label: color
+  - type: field_group_list
+    name: buttons
+    label: buttons
+    fields:
+    - type: text
+      name: arrow
+      label: arrow
+    - type: text
+      name: label
+      label: label
+    - type: text
+      name: color
+      label: color
+    - type: text
+      name: justify
+      label: justify
+    - type: text
+      name: href
+      label: href
+- type: field_group
+  name: about
+  label: about
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - name: url
+    type: text
+    config:
+      required: false
+    label: url
+  - type: textarea
+    name: description
+    label: description
+  - name: href
+    type: text
+    config:
+      required: false
+    label: href
+  - name: image
+    type: file
+    config:
+      maxSize: 64
+    label: image
+- type: field_group
+  name: skills
+  label: skills
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: subtitle
+    label: subtitle
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: file
+      name: icon
+      label: icon
+    - type: text
+      name: title
+      label: title
+    - type: text
+      name: description
+      label: description
+- type: field_group
+  name: years
+  label: years
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: button
+      label: button
+    - type: text
+      name: title
+      label: title
+    - type: text
+      name: active
+      label: active
+    - type: textarea
+      name: subtitle
+      label: subtitle
+    - type: field_group_list
+      name: etape
+      label: etape
+      fields:
+      - type: text
+        name: title
+        label: title
+      - type: textarea
+        name: content
+        label: content
+- type: field_group
+  name: profession
+  label: profession
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: subtitle
+    label: subtitle
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: title
+      label: title
+    - type: textarea
+      name: description
+      label: description
+- type: field_group
+  name: testimonials
+  label: testimonials
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: list
+    name: filter
+    label: filter
+pages:
+- content/cursus/bachelor-marketing-digital.md

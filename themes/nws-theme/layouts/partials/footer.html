@@ -1,0 +1,101 @@
+<!-- footer -->
+<footer class="bg-green">
+    <div class="container py-5 footer-lg-grid">
+      <div class="row text-center align-items-center mb-4 mb-lg-0" style="grid-area: Info">
+        <div class="col-12">
+          <img class="m-auto" src="/uploads/assets/nws-white-logo.png" alt="Normandie Web School">
+          <hr class="white small"/>
+          <p class="m-0">{{ .Site.Params.Abstract}}</p>
+          <img src="/uploads/datadock.png" alt="" class="mt-4" style="width: 50px;">
+        </div>
+      </div>
+  
+      <div class="row px-2 px-md-0 pl-lg-5 align-items-center"  style="grid-area: Buttons">
+        <div class="col-12 mt-3 px-md-4">
+          <a href="/contact" class="w-100 btn font-weight-medium color-white color-blue py-3">Nous contacter</a>
+        </div>
+
+        <div class="col-12 mt-3 px-md-4">
+          <a href="/agenda" class="w-100 btn btn-outline font-weight-medium color-white py-3">Actualités de l'école</a>
+        </div>
+        <div class="col-12 my-3 px-md-4">
+          <a href="/faq" class="w-100 btn btn-outline font-weight-medium color-white py-3">Foire aux questions</a>
+        </div>
+      </div>
+
+      <div class="row text-center text-lg-left pr-lg-5"  style="grid-area: Contact">
+        <div class="col-12 mt-5 mt-md-0 py-md-3 d-flex flex-column flex-lg-row align-items-center">
+          <img src="/uploads/icn-marker-white.png" alt="Icone adresse"/>
+          <p class="m-0 mt-2 ml-3">{{ .Site.Params.Address | markdownify }}</p>
+        </div>
+        <div class="col-lg-12 mt-5 mt-md-0 py-md-3 d-flex flex-column flex-lg-row align-items-center">
+          <img src="/uploads/icn-phone-white.png" alt="Icone téléphone"/>
+          <p class="m-0 mt-2 ml-3">{{ .Site.Params.Phone}}</p>
+        </div>
+        <div class="col-lg-12 mt-5 mt-md-0 py-md-3 d-flex flex-column flex-lg-row align-items-center">
+          <img src="/uploads/icn-mail-white.png" alt="Icone email"/>
+          <p class="m-0 mt-2 ml-3">{{ .Site.Params.Email}}</p>
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+  <div class="text-center bg-grey py-5 subfooter">
+    <ul class="p-0">
+      <li class="m-2"><a href="/mentions-legales">Mentions Légales</a></li>
+      <li class="m-2 px-3 mb-3"><a href="/politique-de-confidentialite">Politique de confidentialité</a></li>
+    </ul>
+    <p class="mb-0 text-light">{{ .Site.Params.copyright | markdownify }}</p>
+  </div>
+</footer>
+<!-- /footer -->
+
+{{ "<!-- JS Plugins -->" | safeHTML }}
+{{ range .Site.Params.plugins.js}}
+<script src="{{ .URL | absURL }}"></script>
+{{ end }}
+<script defer src="https://kit.fontawesome.com/0cd9807eef.js" crossorigin="anonymous"></script>
+
+{{ "<!-- Main Script -->" | safeHTML }}
+{{ $script := resources.Get "js/script.js" | minify}}
+<script defer src="{{ $script.Permalink }}"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/AmauriC/tarteaucitron.js@20200910/tarteaucitron.min.js"></script>
+<script >
+  tarteaucitron.init({
+  "privacyUrl": "", /* Privacy policy url */
+
+  "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+  "cookieName": "tarteaucitron", /* Cookie name */
+
+  "orientation": "middle", /* Banner position (top - bottom) */
+
+  "showAlertSmall": false, /* Show the small banner on bottom right */
+  "cookieslist": false, /* Show the cookie list */
+
+    "showIcon": true, /* Show cookie icon to manage cookies */
+    "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+  "adblocker": false, /* Show a Warning if an adblocker is detected */
+
+    "DenyAllCta" : true, /* Show the deny all button */
+    "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+    "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+
+  "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+  "removeCredit": false, /* Remove credit link */
+  "moreInfoLink": true, /* Show more info link */
+
+    "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+    "useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+
+  //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+
+    "readmoreLink": "", /* Change the default readmore link */
+
+    "mandatory": true, /* Show a message about mandatory cookies */
+  });
+</script>

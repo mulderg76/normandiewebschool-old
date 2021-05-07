@@ -1,0 +1,128 @@
+{{ define "main" }}
+
+<!-- hero area -->
+<section
+  class="hero-area overflow-hidden d-flex align-items-center"
+  id="parallax"
+  style="background-image: url('{{ .Params.banner.image | absURL }}')"
+>
+  <div class="container d-block d-lg-none">
+    <div class="row">
+      <div class="col-lg-11 d-none d-lg-block">
+        <h1>{{ .Params.banner.title | safeHTML }}</h1>
+        <h2>{{ .Params.banner.subtitle | safeHTML }}</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /hero area -->
+
+{{ partial "components/page-title" (dict "context" . "title" .Params.banner.title "subtitle" .Params.banner.subtitle ) }}
+
+{{ if .Params.form.enable }}
+<!-- about -->
+<section class="bg-lightgrey pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        {{ with .Params.form }}
+        <div class="card second-push-top">
+          <div class="card-header">
+            <h3 class="mb-0 title-medium color-blue separator-left">{{.title}}</h3>
+          </div>
+
+          <div>
+            <div class="card-body">
+              <form id="ajaxForm" class="mt-3" method="POST" action="https://getform.io/f/37b4129b-b178-4152-b7df-979b506126aa">
+                <div class="form-group">
+                  {{range .input}} {{if (not .textarea)}}
+                  <div class="input-icon mb-3 position-relative w-lg-{{ .width }} {{ .padding }} d-lg-inline-block">
+                    <img src="{{.icon}}" alt="icn-contact" class="icn-contact" />
+                    <input
+                      type="{{.type}}"
+                      placeholder="{{.placeholder}}"
+                      {{ if .required | eq true }} required="true" {{ end }}
+                      class="form-control {{.className}}"
+                      name={{.name}}
+                    />
+                  </div>
+                  {{end}} {{if .textarea}}
+                  <div class="input-icon mb-3 position-relative">
+                    <img src="{{.icon}}" alt="icn-contact" class="icn-contact icn-contact-message" />
+                    <textarea
+                      cols="30"
+                      rows="10"
+                      placeholder="{{.placeholder}}"
+                      {{ if .required | eq true }} required="true" {{ end }}
+                      name="{{.name}}"
+                    ></textarea>
+                  </div>
+                  {{end}} {{end}}
+                  <div class="row mb-lg-4">
+                    <div class="col-lg-8">
+                      {{range $index, $el := .checkbox}}
+                      <div class="form-check pb-3">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          id="checkbox-{{$index}}"
+                          name="{{.name}}"
+                          {{ if .required | eq true }} required="true" {{ end }}
+                        />
+                        <label class="form-check-label" for="checkbox-{{$index}}"
+                          >{{.content}}</label
+                        >
+                      </div>
+                      {{end}}
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-center my-5 my-lg-0">
+                      <input type="hidden" id="captchaResponse" name="g-recaptcha-response">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                      <button
+                        type="submit"
+                        class="btn font-weight-medium color-blue py-3 px-5"
+                      >
+                        {{.button_text}}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-5 mt-lg-0">
+        <div class="card second-push-top subForm">
+          {{range .item}}
+          <div class="row my-4 d-flex flex-column align-items-center">
+            <img src="{{.image }}" alt="{{.info}}" class="mb-4">
+            <h3 class="color-blue w-100 px-4 text-center">  {{ .info | safeHTML }}</h3>
+            <p class="">{{.subInfo | safeHTML }}</p>
+          </div>
+          {{end}}
+          <div class="col-12 justify-content-center my-4 d-flex">
+              <a title="{{.inscription_button_text}}" href="{{ .Site.BaseURL }}/inscription/" class="btn font-weight-medium color-blue py-3 px-4">{{.inscription_button_text}}</a>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+<script src="https://www.google.com/recaptcha/api.js?render=6Ld62j8aAAAAAN6zC4CY4GOyV2D_LU1x4CzuHsNs"></script>
+
+<script>
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6Ld62j8aAAAAAN6zC4CY4GOyV2D_LU1x4CzuHsNs', {action: 'homepage'})
+            .then(function(token) {
+              document.getElementById('captchaResponse').value = token;
+            });
+  });
+</script>
+{{ end }} {{ end }}

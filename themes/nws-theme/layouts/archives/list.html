@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{ $archive := lower .Title }}
+
+  <!-- hero area -->
+  <section class="hero-area overflow-hidden d-flex align-items-center" id="parallax" style="background-image: url('{{ .Params.banner.image | absURL }}')">
+  </section>  
+  <!-- /hero area -->
+
+{{ partial "components/page-title" (dict "context" . "title" .Params.banner.title "subtitle" .Params.banner.subtitle ) }}
+
+{{ if .Params.about.enable }}
+    <!-- about -->
+    {{ partial "components/page-introduction-up" (dict "context" . "title" .Params.about.title "content" .Params.about.content "image" .Params.about.image ) }}
+{{ end }}
+    <!-- /about -->
+
+{{ range $key, $value := .Site.Taxonomies.archives }}{{ if eq $key $archive }}{{ range $value.Pages }}
+                <article class="media">
+                    <div class="media-content">
+                        <div class="content">
+                          <div class="content">
+                            <p class="title is-4"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
+                            <p class="subtitle is-size-6 has-text-grey-light">
+                                <time class="has-text-grey-light is-size-7">Publié le {{ $mymonths := index $.Site.Data.mois }}{{ .Date.Day }}&nbsp;{{ index $mymonths (printf "%d" .Date.Month) }} {{ .Date.Year }} &middot;
+                                <i class="far fa-clock"></i>&nbsp;{{.ReadingTime}} min de lecture
+                            </p>
+                          </div>   
+                            <p>{{ .Summary }}...</p>
+                        </div>
+                    </div>
+                </article>
+                <br>
+{{ end }}{{ end }}{{ end }}
+            </div>
+        </div>
+    </div>
+    <div class="column is-3">
+        {{ partial "widget-tags.html" . }}<br>
+        {{ partial "widget-recent.html" . }}<br>
+        {{ partial "widget-archives.html" . }}
+    </div>
+</div>
+
+
+{{ end }}

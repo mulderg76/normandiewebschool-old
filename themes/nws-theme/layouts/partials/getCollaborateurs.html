@@ -1,0 +1,59 @@
+{{ $collab := where .Site.RegularPages "Type" "in" "collaborateurs" }}
+
+<script>
+  window.onload = () => {
+      const data = []
+      {{range $collab}}
+            data.push({
+                name: {{.Params.Name }},
+                image: {{.Params.Image | relURL}},
+            })
+      {{end}}
+
+      let max = 5
+
+      const displayEvents = (max) => {
+        let html = ''
+        let lastIndex = 0
+        data.map((collaborateur, i) => {
+            if(i > max ) return
+            html = html + `<div class="col-6 my-5 d-flex justify-content-center align-items-center">
+                              <img src=${collaborateur.image} alt=${collaborateur.Name} class="w-75 mx-auto">
+                            </div>`
+
+            lastIndex = i
+        })
+
+        document.querySelector('#collab').innerHTML = html
+
+        if(lastIndex == data.length - 1) {
+            document.querySelector('#more').style.display = 'none'
+            max = data.length - 1
+        }
+      }
+      displayEvents(max)
+
+    document.querySelector('#more').addEventListener('click', () => {
+      moreEvents()
+    })
+
+    const moreEvents = () => {
+        max = data.length
+        displayEvents(max)
+    }
+  }
+</script>
+
+<div class="container mt-5">
+  <div id="collab" class="row"></div>
+  <div class="row">
+    <div class="d-flex justify-content-center w-100">
+      <button
+        id="more"
+        class="btn btn-outline font-weight-medium color-blue py-3 mt-5"
+      >
+        Afficher toutes les entreprises
+      </button>
+    </div>
+  </div>
+</div>

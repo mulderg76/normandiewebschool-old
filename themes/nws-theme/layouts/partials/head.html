@@ -1,0 +1,87 @@
+<head>
+  <meta charset="utf-8">
+  <title>{{with .Title }}Normandie Web School • {{ . }} {{ else }} {{ .Site.Title }} {{ end }}</title>
+
+  {{ "<!-- mobile responsive meta -->" | safeHTML }}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+  {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+
+  <link rel="dns-prefetch" href="{{ .Site.BaseURL }}"/>
+  <link rel="preconnect" href="{{ .Site.BaseURL }}"/>
+  <link rel="canonical" href="https://normandiewebschool.fr{{ .RelPermalink }}"/>
+
+  <meta name="google" content="nositelinkssearchbox">
+  <link rel="canonical" href="URL" />
+  <!-- open graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ .Site.Title }}"/>
+  <meta property="og:description" content="{{ .Site.Params.description }}"/>
+  <meta property="og:site_name" content="{{ .Site.Title }}"/>
+
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://normandiewebschool.fr{{ .RelPermalink }}">
+  <meta property="twitter:title" content="{{ .Site.Title }}">
+  <meta property="twitter:description" content="{{ .Site.Params.description }}">
+
+  <link rel="canonical" href="https://normandiewebschool.fr{{ .RelPermalink }}"/>
+  <meta property="og:locale" content="fr">
+  {{ if .Params.noindex }}
+  <meta name="robots" content="noindex" /> 
+  {{ end }}
+
+  {{ if .Params.seo_image }} 
+  <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.seo_image }}">
+  <meta property="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.seo_image }}">
+  {{ else }}
+  <meta property="og:image" content="https://normandiewebschool.fr/uploads/meta-generale.jpg">
+  <meta property="twitter:image" content="https://normandiewebschool.fr/uploads/meta-generale.jpg">
+  {{ end }}
+
+  <link rel="shortcut icon" href="{{ .Site.BaseURL }}/uploads/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="{{ .Site.BaseURL }}/uploads/favicon/favicon.png" type="image/png">
+  <link rel="icon" sizes="16x16" href="{{ .Site.BaseURL }}/uploads/favicon/favicon-16x16.png" type="image/png">
+  <link rel="icon" sizes="32x32" href="{{ .Site.BaseURL }}/uploads/favicon/favicon-32x32.png" type="image/png">
+  <link rel="icon" sizes="96x96" href="{{ .Site.BaseURL }}/uploads/favicon/favicon-96x.png" type="image/png">
+  <link rel="icon" sizes="310x310" href="{{ .Site.BaseURL }}/uploads/favicon/favicon-310x310.png" type="image/png">
+
+  {{ hugo.Generator }}
+
+  <style>
+    :root{
+      --primary-color:{{ .Site.Params.theme_color }};
+    }
+    </style>
+
+
+  {{ "<!-- plugins -->" | safeHTML }}
+  {{ range .Site.Params.plugins.css }}
+  <link rel="stylesheet" href="{{ .URL | absURL }} ">
+  {{ end }}
+
+  {{ if .Site.IsServer }}
+    {{ $cssOpts := (dict "targetPath" "assets/css/main.css" "enableSourceMap" true)}}
+    {{ $styles := resources.Get "scss/main.scss" | toCSS $cssOpts }}
+    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" media="screen">
+  {{ else }}
+    {{$cssOpts := (dict "targetPath" "assets/css/main.css") }}
+    {{ $styles := resources.Get "scss/main.scss" | toCSS $cssOpts | minify | fingerprint }}
+    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" media="screen">
+  {{ end }}
+
+  {{ "<!--Favicon-->" | safeHTML }}
+  <link rel="shortcut icon" href="{{ `uploads/favicon.png` | absURL }} " type="image/x-icon">
+  <link rel="icon" href="{{ `uploads/favicon.png` | absURL }} " type="image/x-icon">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NPJGGW7');</script>
+<!-- End Google Tag Manager -->
+  
+</head>

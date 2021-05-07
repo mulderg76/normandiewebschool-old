@@ -1,0 +1,141 @@
+---
+label: Design
+hide_body: true
+fields:
+- type: text
+  name: global
+  label: global
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: file
+    name: logo
+    label: logo
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: description
+    label: description
+  - type: text
+    name: color
+    label: color
+  - type: field_group_list
+    name: buttons
+    label: buttons
+    fields:
+    - type: text
+      name: arrow
+      label: arrow
+    - type: text
+      name: label
+      label: label
+    - type: text
+      name: color
+      label: color
+    - type: text
+      name: justify
+      label: justify
+- type: field_group
+  name: about
+  label: about
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: file
+    name: image
+    label: image
+  - type: textarea
+    name: description
+    label: description
+- type: field_group
+  name: skills
+  label: skills
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: subtitle
+    label: subtitle
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: file
+      name: icon
+      label: icon
+    - type: text
+      name: title
+      label: title
+    - type: textarea
+      name: description
+      label: description
+- type: field_group
+  name: years
+  label: years
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: button
+      label: button
+    - type: text
+      name: title
+      label: title
+    - type: text
+      name: active
+      label: active
+    - type: textarea
+      name: subtitle
+      label: subtitle
+    - type: field_group_list
+      name: etape
+      label: etape
+      fields:
+      - type: text
+        name: title
+        label: title
+      - type: textarea
+        name: content
+        label: content
+- type: field_group
+  name: profession
+  label: profession
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: subtitle
+    label: subtitle
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: title
+      label: title
+    - type: textarea
+      name: description
+      label: description
+- type: field_group
+  name: testimonials
+  label: testimonials
+  fields:
+  - type: boolean
+    name: enable
+    label: enable

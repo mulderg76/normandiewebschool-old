@@ -1,0 +1,2 @@
+{{ $image := (site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .image ) }}
+<img src="{{ .image | absURL }}" alt="{{.alt}}" width="{{.width}}" {{if .class }}class="{{.class}}" {{end}}/>

@@ -1,0 +1,88 @@
+---
+label: Développement
+hide_body: true
+fields:
+- type: text
+  name: global
+  label: global
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: logo
+    label: logo
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: description
+    label: description
+  - type: text
+    name: color
+    label: color
+  - type: list
+    name: buttons
+    label: buttons
+- type: field_group
+  name: about
+  label: about
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: image
+    label: image
+  - type: text
+    name: description
+    label: description
+- type: field_group
+  name: skills
+  label: skills
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: subtitle
+    label: subtitle
+  - type: list
+    name: item
+    label: item
+- type: field_group
+  name: years
+  label: years
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: list
+    name: item
+    label: item
+- type: field_group
+  name: profession
+  label: profession
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: subtitle
+    label: subtitle
+  - type: list
+    name: item
+    label: item
+- type: field_group
+  name: testimonials
+  label: testimonials
+  fields:
+  - type: boolean
+    name: enable
+    label: enable

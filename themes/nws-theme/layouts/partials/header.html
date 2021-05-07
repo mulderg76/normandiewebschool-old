@@ -1,0 +1,79 @@
+<link rel="stylesheet" type="text/css" href="/uploads/assets/print.css" media="print" />
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPJGGW7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '446975046411412');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=446975046411412&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<div class="bottom-decoration">
+  <div class="red"></div>
+  <div class="blue"></div>
+  <div class="yellow"></div>
+</div>
+
+<header class="navigation fixed-top">
+  <nav class="c-navbar-top d-none d-lg-block">
+    <ul class="container d-flex justify-content-end mr-auto">
+      {{ range .Site.Menus.top }}
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ .URL | absURL }}">{{ .Name }}</a>
+          </li>
+      {{ end }}
+    </ul>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg c-navbar-light">
+    <div class="navbar container px-3">
+        <a class="navbar-brand" href="{{ .Site.BaseURL }}"><img width='100' src="{{ .Site.Params.logo | absURL }}" alt="{{.Site.Title}}"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            {{ range .Site.Menus.desktop }}
+            {{ if .HasChildren }}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                {{ .Name }}
+              </a>
+              <div class="dropdown-menu" >
+                {{ range .Children }}
+                <a class="dropdown-item" href="{{ .URL | absURL }}">{{ .Name }}</a>
+                {{ end }}
+              </div>
+            </li>
+            {{ else }}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ .URL | absURL }}">{{ .Name }}</a>
+            </li>
+            {{ end }}
+            {{ end }}
+          </ul>
+        </div>
+        
+        <img id="burger" alt="Ouvrir le menu" class="d-block d-lg-none" src="/uploads/menu_burger.svg" />
+    </div>
+    {{ partial "side-menu.html" . }}
+  </nav>
+</header>

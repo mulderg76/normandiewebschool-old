@@ -1,0 +1,67 @@
+<script>
+  window.onload = () => {
+      const data = {{.month}}
+      const obj = []
+      for (const key in data) {
+        for (const event in data[key].item) {
+            obj.push(data[key].item[event])
+        }
+      }
+
+      let max = 2
+
+      const displayEvents = (max) => {
+        let html = ''
+        let lastIndex = 0
+        obj.map((event, i) => {
+            if(i > max ) return
+            html = html + `<a href="${event.href}">
+                            <div class="row event mb-2">
+                              <div class="date col-4 d-flex flex-column justify-content-center pl-0">
+                                  <p class="font-weight-bold text-center">${event.date}</p>
+                                  <p class="text-center">${event.start} - ${event.end}</p>
+                              </div>
+                              <div class="desc col-8 d-flex flex-column justify-content-center pr-0">
+                                  <p class="font-weight-bold">${event.name}</p>
+                                  <p>${event.localisation}</p>
+                              </div>
+                            </div>
+                          </a>`
+
+            lastIndex = i
+        })
+
+        document.querySelector('#events').innerHTML = html
+
+        if(lastIndex == obj.length - 1) {
+            document.querySelector('#more').style.display = 'none'
+            max = obj.length - 1
+        }
+      }
+      displayEvents(max)
+
+
+    document.querySelector('#more').addEventListener('click', () => {
+        moreEvents()
+    })
+
+
+    const moreEvents = () => {
+        max += 3
+        displayEvents(max)
+    }
+  }
+</script>
+
+<section>
+  <div class="container" id="events"></div>
+    <div class="d-flex justify-content-center mt-4">
+      <button
+        id="more"
+        class="btn btn-outline font-weight-medium color-blue py-3"
+      >
+        Afficher plus d'événements
+      </button>
+    </div>
+</section>
+

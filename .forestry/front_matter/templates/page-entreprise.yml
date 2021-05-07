@@ -1,0 +1,136 @@
+---
+label: page-entreprise
+hide_body: true
+fields:
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
+- type: text
+  name: type
+  label: type
+  hidden: true
+- type: field_group
+  name: banner
+  label: Bannière
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+  - type: file
+    name: image
+    label: image
+- type: field_group
+  name: about
+  label: about
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: file
+    name: image
+    label: image
+  - type: textarea
+    name: content
+    label: content
+- type: field_group
+  name: recrutement
+  label: recrutement
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: file
+      name: image
+      label: image
+    - type: text
+      name: title
+      label: title
+    - type: text
+      name: button
+      label: button
+    - type: textarea
+      name: content
+      label: content
+    - type: text
+      name: color
+      label: color
+- type: field_group
+  name: colorBlock
+  label: colorBlock
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: title
+      label: title
+    - type: textarea
+      name: content
+      label: content
+    - type: text
+      name: button
+      label: button
+    - type: text
+      name: color
+      label: color
+- type: field_group
+  name: partners
+  label: partners
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: subtitle
+    label: subtitle
+  - type: field_group_list
+    name: partner
+    label: partner
+    fields:
+    - type: text
+      name: logo
+      label: logo
+- name: partenariat
+  type: field_group
+  config: {}
+  fields:
+  - name: enable
+    type: boolean
+    label: enable
+  - name: title
+    type: text
+    config:
+      required: false
+    label: title
+  label: partenariat
+- type: field_group
+  name: testimonials
+  label: testimonials
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+pages:
+- content/entreprises/_index.md

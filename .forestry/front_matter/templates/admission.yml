@@ -1,0 +1,102 @@
+---
+label: Admission
+hide_body: true
+fields:
+- type: text
+  name: global
+  label: global
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+- type: field_group
+  name: about
+  label: about
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: content
+    label: content
+  - name: image
+    type: file
+    config:
+      maxSize: 64
+    label: image
+- type: field_group
+  name: testimonials
+  label: testimonials
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+- name: conditions
+  type: field_group
+  config: {}
+  fields:
+  - name: enable
+    type: boolean
+    label: enable
+  - name: title
+    type: text
+    config:
+      required: false
+    label: title
+  - name: content
+    type: textarea
+    default: ''
+    config:
+      required: false
+      wysiwyg: false
+      schema:
+        format: markdown
+    label: content
+  - name: image
+    type: file
+    config:
+      maxSize: 64
+    label: image
+  label: conditions
+- name: financement
+  type: field_group
+  config: {}
+  fields:
+  - name: enable
+    type: boolean
+    label: enable
+  - name: title
+    type: text
+    config:
+      required: false
+    label: title
+  - name: content
+    type: textarea
+    default: ''
+    config:
+      required: false
+      wysiwyg: false
+      schema:
+        format: markdown
+    label: content
+  - name: image2
+    type: file
+    config:
+      maxSize: 64
+    label: image2
+  label: financement
+pages:
+- content/admission/_index.md
+- content/post/_index.md

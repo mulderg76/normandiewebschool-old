@@ -1,0 +1,29 @@
+image: bpack/hugo-npm
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+  - hugo version
+  - npm install
+  - hugo -d public_html --baseURL=https://normandiewebschool.fr
+  artifacts:
+    paths:
+    - public_html
+  only:
+  - master
+  when: manual
+  
+deploy:
+  stage: deploy
+  script:
+    - apt-get update -qq && apt-get install -y -qq lftp
+    - lftp -u $FTP_LOGIN,$FTP_PASSWORD $FTP_HOST -e "mirror -v --parallel=2 -e -R --ignore-time -p ./public_html/ / ; quit"
+    - echo "deployment complete"
+  dependencies:
+    - build
+  when: manual
+

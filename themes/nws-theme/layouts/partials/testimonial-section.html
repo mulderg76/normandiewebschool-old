@@ -1,0 +1,67 @@
+<!-- Team -->
+<section class="bg-lightgrey section {{.padding}}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                {{ $testimonials := where .context.Site.RegularPages "Type" "in" "testimonial" }}
+
+                <div id="testimonialsCarousel" class="carousel slide pb-5" data-ride="carousel" data-interval="20000">
+                    <ol class="carousel-indicators">
+                        {{ $firstIndex := 0 }}
+                        {{ $.context.Scratch.Add "x" 0 }}
+                        
+                        {{ $.context.Scratch.Set "slideNb" 0}}
+
+                        {{ range $index, $value := $testimonials }}
+                            {{ $testimonial := . }}
+
+                            {{ range .Params.Tag }}
+                            {{ $name := . }}
+                            {{ if (in $.filter $name) }}
+                                {{ $x := $.context.Scratch.Get "x" }}
+                                {{ $slideNb := $.context.Scratch.Get "slideNb" }}                       
+                                {{ if (eq $x 0) }} {{ $.context.Scratch.Add "x" $index }} {{ end }}
+                                {{ $x := $.context.Scratch.Get "x" }}
+                                <li data-target="#testimonialsCarousel" data-slide-to="{{$slideNb}}" class="{{ if (eq $index $x )}}active{{end}}"></li>
+                            
+                                {{ $.context.Scratch.Add "slideNb" 1}}
+                                {{ end }}
+                        {{ end }}
+
+                        {{ end }}
+                    </ol>
+
+                    <div class="carousel-inner">
+                        {{ $firstIndex := 0 }}
+                        {{ $.context.Scratch.Add "x" 0 }}
+
+                        {{ range $index, $value := $testimonials }}
+                        {{ $testimonial := . }}
+                        {{ range .Params.Tag }}
+                        {{ $name := . }}
+                        {{ if (in $.filter $name) }}
+                        {{ $x := $.context.Scratch.Get "x" }}
+                        {{ if (eq $x 0) }} {{ $.context.Scratch.Add "x" $index }} {{ end }}
+                        {{ $x := $.context.Scratch.Get "x" }}
+                        <div class="carousel-item  {{ if (eq $index $x )}}active{{end}}">
+                            {{ partial "testimonial.html" $testimonial }}
+                        </div>
+                        {{ end }}
+                        {{ end }}
+                        {{ end }}
+                    </div>
+
+                    <a class="carousel-control-prev" href="#testimonialsCarousel" role="button" data-slide="prev">
+                        <span class="color-blue" style="position: absolute;top: 160px;"><i class="fa fa-angle-left carousel-arrow" aria-hidden="true"></i></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#testimonialsCarousel" role="button" data-slide="next">
+                        <span class="color-blue" style="position: absolute;top: 160px;"><i class="fa fa-angle-right carousel-arrow" aria-hidden="true"></i></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,236 @@
+{{ define "main" }}
+
+<!-- hero area -->
+{{ with .Params.banner }}
+<section class="hero-area overflow-hidden d-flex align-items-center" id="parallax" style="background-image: url('{{ .image | absURL }}')">
+
+</section>
+
+<section class="pb-4 bg-lightgrey up">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 second-push-top">
+                <div class="card filiere-intro">
+                    <img src="{{.logo}}" alt="{{.title}}" class="logo w-20 w-lg-50 m-auto"/>
+
+                    <div class="card-header">
+                        <h1 class="my-3 my-lg-0 title-medium {{.color}} separator-left separator-lg-block w-100 text-center text-lg-left">{{ .title | safeHTML }}</h1>
+                    </div>
+
+                    <div class="card-body description">
+                        <p class="font-weight-medium text-center text-lg-left">
+                        {{ .description | safeHTML }}
+                        </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-between justify-content-lg-center p-3 btn-filieres">
+        {{ range  $index, $value := .buttons }}
+                <a href="{{.href}}" class="col-5 col-lg-3 card py-4 px-1 switch-btn">
+                    <div>
+                        <div class="arrow {{.arrow}} {{.color}}"></div>
+                        <p class="font-weight-bold {{.justify}} {{.color}} m-0 text-lg-center">
+                            {{.label}}
+                        </p>
+                    </div>
+                </a>
+                {{ if $index | eq 0 }}
+                <div style="width: 30px" class="d-none d-md-block"></div>
+                {{ end }}
+        {{ end }}
+    </div>
+</section>
+{{end}}
+
+{{ if .Params.about.enable }}
+{{ with .Params.about }}
+<section class="pb-4 bg-lightgrey position-relative overflow-hidden" id="filiere-doc">
+    <div class="container d-block position-relative text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center d-flex justify-content-center">
+                    <a href="{{ .href }}" target="_blank">
+                    <img src="{{.image | relURL}}" alt="{{.Params.Name }}" width="100%"/>
+                    </a>
+                </div>
+                <p class="col-md-12 font-weight-medium text-center px-3 my-3">
+                    {{ .description | safeHTML }}
+                </p>
+                </div>
+                    <div class="row">
+                        <div class="col-12 text center d-flex justify-content-center">
+                        <a href="/documentation" class="btn font-weight-medium color-blue mt-4 mb-3 pt-3 pb-3 pl-4 pr-4">Télécharger de la documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <img src="/uploads/points.svg" class="points">
+    </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{ if .Params.skills.enable }}
+{{ with .Params.skills }}
+<section class="bg-lightgrey pt-4 clip-bottom-white skills" id="skills">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div
+                        class="card-header"
+                    >
+                        <h2 class="mb-0 color-blue title-medium separator-left">
+                            {{.title}}
+                        </h2>
+                    </div>
+
+                    <div>
+                        <div class="card-body">
+                            <p class="mb-4">
+                                {{.subtitle}}
+                            </p>
+
+                            <div class="row">
+                                {{ range .item }}
+                                    <div class="col-12 col-lg-4 d-flex flex-column align-items-center skill mt-5">
+                                    <div class="icon mb-3">
+                                        <img src="{{.icon}}" alt="{{.title}}">
+                                    </div>
+                                    <h3 class="text-center mb-3">{{.title}}</h3>
+                                    <p>{{.description | safeHTML }}</p>
+                                    </div>
+                                {{ end }}
+                            </div>
+
+                            <div class="row mt-5 mb-4 d-block d-lg-none">
+                                <div class="col-12 d-flex justify-content-center">
+                                <a href="" class="btn btn-outline font-weight-medium color-blue py-3 px-4">Afficher toutes les compétences</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+
+
+{{ if .Params.years.enable }}
+{{ with .Params.years }}
+<section class="section" id="years">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div
+                    id="yearCarousel"
+                    class="carousel slide"
+                    data-ride="carousel"
+                    data-interval="false"
+                >
+                    <div class="carousel-indicators justify-content-around justify-content-lg-center">
+                        {{range $index, $value := .item}}
+                        <a
+                            data-target="#yearCarousel"
+                            data-slide-to="{{$index}}"
+                            class="btn btn-years {{.active}} mx-lg-4"
+                        >{{.button}}</a>
+                        {{end}}
+                    </div>
+
+                    <div class="carousel-inner mt-5">
+                        {{ range $index, $value := .item }}
+                        <div class="carousel-item {{ if (eq $index 0 )}}active{{end}}">
+                            <div>
+                                <h3 class="mb-0 title-medium color-blue text-lg-center">
+                                    {{.title}}
+                                </h3>
+                            </div>
+                            <p class="my-4 text-lg-center">{{.subtitle | safeHTML }}</p>
+
+                            <div class="row">
+                                {{ range $index, $value := .etape }}
+                                    <div class="col-12 col-lg-4 flex-column mt-4">
+                                        <div class="step container">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <p class="number mb-0 mr-2">
+                                                    {{add $index 1}}
+                                                </p>
+                                                <h3 class="mb-0">
+                                                    {{.title}}
+                                                </h3>
+                                            </div>
+                                            <p>
+                                                {{.content | safeHTML }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                        {{ end }}
+                        <div class="row mt-5 mb-4 d-block d-lg-none">
+                            <div class="col-12 d-flex justify-content-center">
+                                <a href="" class="btn btn-outline font-weight-medium color-blue py-3 px-4 btn-ue">Afficher toutes les unités d'enseignement</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{ if .Params.profession.enable }}
+{{ with .Params.profession }}
+<section class="clip-bottom-lightgrey" id="profession">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0 color-blue title-medium separator-left">
+                            {{.title}}
+                        </h3>
+                    </div>
+                    <div>
+                        <div class="card-body">
+                            <p class="mb-4">
+                                {{.subtitle}}
+                            </p>
+
+                            <div class="row  d-flex justify-content-center">
+                                {{ range .item }}
+                                    <div class="col-12 col-lg-4 flex-column align-items-center profession mt-5 px-lg-5">
+                                        <h3 class="text-center mb-3 color-blue">{{.title}}</h3>
+                                        <p class="text-center m-auto">{{.description}}</p>
+                                    </div>
+                                {{ end }}
+                            </div>
+                            <div class="row mt-5 mb-4 d-block d-lg-none">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <a href="" class="btn btn-outline font-weight-medium color-blue py-3 px-4">Afficher tous les débouchés</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+
+
+{{ if .Params.testimonials.enable }}
+    {{ partial "testimonial-section.html" (dict "context" . "filter" .Params.testimonials.filter ) }}
+{{ end }}
+{{end}}

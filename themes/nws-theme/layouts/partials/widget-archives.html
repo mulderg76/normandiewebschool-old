@@ -1,0 +1,8 @@
+<div class="card">
+    <div class="card-content">
+        <h2 class="mb-0 title-medium color-blue separator-left">Articles plus anciens</h2>
+        {{ range (where .Site.RegularPages "Section" "post").GroupByDate "2006" }}
+            <a href="{{ "archives" | absURL }}/{{ .Key }}">{{ .Key }}</a> ({{ len .Pages }})<br>
+        {{ end }}
+    </div>
+</div>

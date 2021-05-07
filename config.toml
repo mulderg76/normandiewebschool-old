@@ -1,0 +1,52 @@
+baseURL = "https://normandiewebschool.fr"
+languageCode = "fr-fr"
+summaryLength = "10"
+theme = "nws-theme"
+title = "L'école des métiers du numérique"
+weight = 1
+[[menu.desktop]]
+URL = "cursus"
+name = "Nos spécialisations"
+weight = 2
+[params]
+abstract = "Grâce à une vision transverse des différents métiers du numérique dans un monde en perpétuelle mutation, la Normandie Web School – par les partenariats qu’elle a noués – fait   en sorte que la formation de ses étudiants soit sans cesse alignée avec les attentes du marché pour qu’ils puissent répondre aux défis des métiers de demain.  "
+address = "Seine Innopolis <br/> 72 Rue de la République <br/> 76140 Le Petit-Quevilly"
+author = "Normandie Web School"
+copyright = "Normandie Web School © 2021"
+description = "La NWS est une École d’Enseignement Supérieur Technique Privée qui forme en 3 ou 5 ans aux métiers du numérique (développement web, du web design et du marketing digital…) et amène vers un titre d’état (RNCP)."
+email = "contact@normandiewebschool.fr"
+home = "Home"
+logo = "uploads/logo_nws.svg"
+phone = "02 79 02 73 78"
+theme_color = "#41228e"
+[params.contact]
+enable = true
+form_action = "#"
+[[params.plugins.css]]
+URL = "plugins/bootstrap/bootstrap.min.css"
+[[params.plugins.css]]
+URL = "plugins/slick/slick.css"
+[[params.plugins.js]]
+URL = "plugins/jQuery/jquery.min.js"
+[[params.plugins.js]]
+URL = "plugins/bootstrap/bootstrap.min.js"
+[[params.plugins.js]]
+URL = "plugins/slick/slick.min.js"
+[params.preloader]
+enable = true
+preloader = ""
+[[params.social]]
+URL = "#"
+icon = "ti-facebook"
+[[params.social]]
+URL = "#"
+icon = "ti-instagram"
+[[params.social]]
+URL = "#"
+icon = "ti-dribbble"
+[[params.social]]
+URL = "#"
+icon = "ti-twitter-alt"
+[taxonomies]
+archive = "archives"
+tag = "tags"

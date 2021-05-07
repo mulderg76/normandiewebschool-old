@@ -1,0 +1,220 @@
+<!-- hero area -->
+{{ with .banner }}
+<section class="hero-area overflow-hidden d-flex align-items-center" id="parallax" style="background-image: url('{{ .image | absURL }}')">
+
+</section>
+
+<section class="pb-4 bg-lightgrey up">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 second-push-top">
+                <div class="card filiere-intro">
+                    <img src="{{.logo}}" alt="{{.title}}" class="logo w-20 w-lg-50 m-auto"/>
+
+                    <div class="card-header {{.color}} title" >
+                        <h3 class="m-auto m-lg-0">{{ .title | safeHTML }}</h3>
+                    </div>
+
+                    <div class="card-body description">
+                        <p class="font-weight-medium text-center text-lg-left">
+                        {{ .description | safeHTML }}
+                        </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-between justify-content-lg-center p-3 btn-filieres">
+        {{ range  $index, $value := .buttons }}
+            <div class="col-5 col-lg-2 card pt-4 pb-4">
+                <div class="arrow {{.arrow}} {{.color}}"></div>
+                <a class="font-weight-bold {{.justify}} {{.color}}" href="{{.href}}">
+                    {{.label}}
+                </a>
+            </div>
+            {{ if $index | eq 0 }}
+            <div style="width: 30px"></div>
+            {{ end }}
+        {{ end }}
+    </div>
+</section>
+{{end}}
+
+{{ with .about }}
+<section class="pb-4 bg-lightgrey position-relative overflow-hidden" id="filiere-doc">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <img src="{{.image}}" class="d-block mx-auto my-4 rounded-circle border-white" style="width: 200px;" alt="">
+            <p class="font-weight-medium text-center px-3">
+                {{ .description | safeHTML }}
+              </p>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+              <a href="{{ .Site.BaseURL }}/documentation/" class="btn font-weight-medium color-blue mt-4 mb-3 pt-3 pb-3 pl-4 pr-4">Télécharger de la <br/>
+                documentation</a>
+            </div>
+        </div>
+    </div>
+      <img src="/uploads/points.svg" class="points">
+
+</section>
+{{ end }}
+
+{{ if .skills.enable }}
+{{ with .skills }}
+<section class="bg-lightgrey pt-4 clip-bottom-white skills">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div
+                        class="card-header color-blue with-separator"
+                    >
+                        <h3 class="mb-0">
+                            {{.title}}
+                        </h3>
+                    </div>
+
+                    <div>
+                        <div class="card-body">
+                            <p class="mb-4">
+                                {{.subtitle}}
+                            </p>
+
+                            <div class="row">
+                                {{ range .item }}
+                                    <div class="col-12 col-lg-4 d-flex flex-column align-items-center skill mt-5">
+                                    <div class="icon mb-3">
+                                        <img src="{{.icon}}" alt="{{.title}}">
+                                    </div>
+                                    <h3 class="">{{.title}}</h3>
+                                    <p>{{.description | markdownify }}</p>
+                                    </div>
+                                {{ end }}
+                            </div>
+
+                            <div class="row mt-5 mb-4 d-block d-lg-none">
+                                <div class="col-12 d-flex justify-content-center">
+                                <a href="" class="btn btn-outline font-weight-medium color-blue py-3 px-4">Afficher toutes les compétences</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+
+
+{{ if .years.enable }}
+{{ with .years }}
+<section class="section" id="years">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div
+                    id="yearCarousel"
+                    class="carousel slide"
+                    data-ride="carousel"
+                    data-interval="false"
+                >
+                    <div class="carousel-indicators justify-content-between justify-content-lg-center">
+                        {{range $index, $value := .item}}
+                        <a
+                            data-target="#yearCarousel"
+                            data-slide-to="{{$index}}"
+                            class="btn btn-years {{.active}} mx-lg-4"
+                        >{{.button}}</a>
+                        {{end}}
+                    </div>
+
+                    <div class="carousel-inner mt-5">
+                        {{ range $index, $value := .item }}
+                        <div class="carousel-item {{ if (eq $index 0 )}}active{{end}}">
+                            <div class="color-blue with-separator with-separator-lg-center">
+                                <h3 class="mb-0 text-lg-center">
+                                    {{.title}}
+                                </h3>
+                            </div>
+                            <p class="mt-4 text-lg-center">{{.subtitle | safeHTML }}</p>
+
+                            <div class="row">
+                                {{ range $index, $value := .etape }}
+                                    <div class="col-12 col-lg-4 flex-column mt-4">
+                                        <div class="step container">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <p class="number mb-0 mr-2">
+                                                    {{add $index 1}}
+                                                </p>
+                                                <h3 class="mb-0">
+                                                    {{.title}}
+                                                </h3>
+                                            </div>
+                                            <p>
+                                                {{.content | safeHTML }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                        {{ end }}
+                        <div class="row mt-5 mb-4 d-block d-lg-none">
+                            <div class="col-12 d-flex justify-content-center">
+                                <a href="" class="btn btn-outline font-weight-medium color-blue py-3 px-4">Afficher toutes les unités d'enseignement</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{ if .profession.enable }}
+{{ with .profession }}
+<section class="clip-bottom-lightgrey skills">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header color-blue with-separator">
+                        <h3 class="mb-0">
+                            {{.title}}
+                        </h3>
+                    </div>
+                    <div>
+                        <div class="card-body">
+                            <p class="mb-4">
+                                {{.subtitle}}
+                            </p>
+
+                            <div class="row">
+                                {{ range .item }}
+                                    <div class="col-12 col-lg-4 flex-column align-items-center profession mt-5 px-lg-5">
+                                        <h3 class="text-center">{{.title}}</h3>
+                                        <p class="text-center m-auto">{{.description}}</p>
+                                    </div>
+                                {{ end }}
+                            </div>
+                            <div class="row mt-5 mb-4 d-block d-lg-none">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <a href="" class="btn btn-outline font-weight-medium color-blue py-3 px-4">Afficher tous les débouchés</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}

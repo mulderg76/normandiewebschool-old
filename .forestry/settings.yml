@@ -1,0 +1,107 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: ''
+webhook_url: 
+sections:
+- type: heading
+  label: Pages
+- type: document
+  path: content/_index.md
+  label: Accueil
+- type: document
+  path: content/cursus/_index.md
+  label: Cursus
+- type: directory
+  path: content/cursus
+  label: Filières
+  create: documents
+  match: "*"
+  exclude: _index.md
+  templates:
+  - page-design
+- type: document
+  path: content/entreprises/_index.md
+  label: Entreprises
+- type: document
+  path: content/agenda/_index.md
+  label: Agenda
+- type: document
+  path: content/admission/_index.md
+  label: Admission
+- type: document
+  path: content/post/_index.md
+  label: Blog
+- type: document
+  path: content/contact/_index.md
+  label: Contact
+- type: document
+  path: content/faq/_index.md
+  label: FAQ
+- type: document
+  path: content/inscription/_index.md
+  label: Inscription
+- type: document
+  path: content/documentation/_index.md
+  label: Documentation
+- type: document
+  path: content/politique-de-confidentialite/_index.md
+  label: Politique de confidentialité
+- type: document
+  path: content/mentions-legales/_index.md
+  label: Mentions légales
+- type: heading
+  label: Données
+- type: directory
+  path: content/testimonials
+  label: Testimonials
+  create: documents
+  match: "/*"
+  templates:
+  - testimonial
+- type: directory
+  path: content/partners
+  label: Partenaires
+  create: documents
+  match: "*"
+  templates:
+  - partners
+- type: directory
+  path: content/collaborateurs
+  label: Collaborateurs
+  create: documents
+  match: "*"
+  templates:
+  - entreprise
+- type: directory
+  path: content/team
+  label: Team
+  create: documents
+  match: "*"
+  templates:
+  - team
+- type: directory
+  path: data
+  label: Data
+  create: documents
+  match: "*"
+  new_doc_ext: yml
+- type: document
+  path: config.toml
+  label: Configuration
+upload_dir: content/uploads
+public_path: "/uploads"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename:"
+build:
+  preview_env:
+  - HUGO_ENV=staging
+  - HUGO_VERSION=0.64.1
+  preview_output_directory: public
+  preview_docker_image: forestryio/hugo:latest
+  mount_path: "/srv"
+  working_dir: "/srv"
+  instant_preview_command: hugo server -D -E -F --port 8080 --bind 0.0.0.0 --renderToDisk
+    -d public
+version: 0.79.0

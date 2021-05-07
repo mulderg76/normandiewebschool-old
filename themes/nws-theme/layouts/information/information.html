@@ -1,0 +1,108 @@
+{{ define "main" }}
+
+<!-- hero area -->
+<section
+  class="hero-area bg-primary overflow-hidden d-flex align-items-center"
+  id="parallax"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-11 d-none d-md-block">
+        <h1>{{ .Site.Data.information.banner.title | safeHTML }}</h1>
+        <h2>{{ .Site.Data.information.banner.subtitle | safeHTML }}</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /hero area -->
+
+<section class="bg-lightgrey">
+  <div class="pb-4 container up">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header color-orange with-separator">
+            <h3>{{ .Site.Data.information.banner.title | safeHTML }}</h3>
+          </div>
+
+          <div class="card-body">
+            <p class="font-weight-medium">
+              {{ .Site.Data.information.banner.subtitle | safeHTML }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ if .Site.Data.information.form.enable }}
+<!-- about -->
+<section class="bg-lightgrey pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {{ with .Site.Data.information.form }}
+        <div class="card">
+          <div class="card-header color-blue with-separator">
+            <h3 class="mb-0">{{.title}}</h3>
+          </div>
+
+          <div>
+            <div class="card-body">
+              <p>{{.subtitle}}</p>
+              <form class="mt-4">
+                <div class="form-group">
+                  {{range .input}} {{if (not .textarea)}}
+                  <div class="input-icon pb-3 position-relative">
+                    <img src="{{.icon}}" alt="" class="position-absolute" />
+                    <input
+                      type="{{.type}}"
+                      placeholder="{{.placeholder}}"
+                      {{ if .required | eq true }} required="true" {{ end }}                      class="form-control"
+                    />
+                  </div>
+                  {{end}} {{if .textarea}}
+                  <div class="input-icon pb-3 position-relative">
+                    <img src="{{.icon}}" alt="" class="position-absolute" />
+                    <textarea
+                      cols="30"
+                      rows="10"
+                      placeholder="{{.placeholder}}"
+                      {{ if .required | eq true }} required="true" {{ end }}                    ></textarea>
+                  </div>
+                  {{end}} {{end}} {{range $index, $el := .checkbox}}
+                  <div class="form-check py-3">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="checkbox-{{$index}}"
+                    />
+                    <label class="form-check-label" for="checkbox-{{$index}}"
+                      >{{.content}}</label
+                    >
+                  </div>
+                  {{end}}
+
+                  <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-center">
+                      <button
+                        type="submit"
+                        class="btn font-weight-medium color-blue py-3 px-5"
+                      >
+                        Accéder à toute la <br />
+                        documentation
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }} {{ end }}

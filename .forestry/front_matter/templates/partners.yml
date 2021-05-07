@@ -1,0 +1,29 @@
+---
+label: Partners
+hide_body: true
+fields:
+- name: name
+  type: text
+  config:
+    required: true
+  label: Name
+- name: type
+  type: text
+  config:
+    required: false
+  label: Type
+  hidden: true
+  default: partner
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: Image
+pages:
+- content/partners/cci-normandie.md
+- content/partners/cfa-academique.md
+- content/partners/greta-normandie.md
+- content/partners/isd-flaubert.md
+- content/partners/metropole-rouen-normandie.md
+- content/partners/nwx.md
+- content/partners/region-normandie.md

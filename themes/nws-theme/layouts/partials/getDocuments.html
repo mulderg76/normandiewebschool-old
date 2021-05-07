@@ -1,0 +1,63 @@
+<script>
+  window.onload = () => {
+      const data = {{.document}}
+      const obj = []
+      for (const key in data) {
+        obj.push(data[key])
+      }
+
+      let max = 5
+
+      const displayEvents = (max) => {
+        let html = ''
+        let lastIndex = 0
+        obj.map((event, i) => {
+            if(i > max ) return
+            html = html + `<a class="row docs mb-2 mt-2 avoid-click" href="${event.document}" target="_blank">
+                            <div class="desc d-flex flex-column justify-content-center">
+                                <p class="font-weight-bold">${event.name}</p>
+                                <p>${event.format}</p>
+                            </div>
+                            <div class="icon d-flex flex-column justify-content-center">
+                                <img src="${event.icon}" style="object-fit: contain";/>
+                            </div>
+                        </a></>`
+
+            lastIndex = i
+        })
+
+        document.querySelector('#docs').innerHTML = html
+
+        if(lastIndex == obj.length - 1) {
+            document.querySelector('#more').style.display = 'none'
+            max = obj.length - 1
+        }
+      }
+      displayEvents(max)
+
+
+    document.querySelector('#more').addEventListener('click', () => {
+        moreEvents()
+    })
+
+
+    const moreEvents = () => {
+        max += 3
+        displayEvents(max)
+    }
+  }
+</script>
+
+<div class="container mt-5">
+  <div id="docs"></div>
+  <div class="row">
+    <div class="d-flex justify-content-center w-100">
+      <button
+        id="more"
+        class="btn btn-outline font-weight-medium color-blue py-3 mt-5"
+      >
+        Afficher plus de documentation
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+---
+label: SEO
+hide_body: true
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: SEO Title
+- name: description
+  type: text
+  config:
+    required: false
+  label: SEO Description
+- name: seo_image
+  type: file
+  config:
+    maxSize: 64
+  label: SEO Image
+  description: "<strong>1200:630 px</strong>"
+  default: "/uploads/meta-generale.jpg"

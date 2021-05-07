@@ -1,0 +1,197 @@
+{{ define "main" }}
+
+  <!-- hero area -->
+  <section class="hero-area overflow-hidden d-flex align-items-center" id="parallax" style="background-image: url('{{ .Params.banner.image | absURL }}')">
+  </section>
+  <!-- /hero area -->
+
+{{ partial "components/page-title" (dict "context" . "title" .Params.banner.title "subtitle" .Params.banner.subtitle ) }}
+
+ {{ if .Params.about.enable }}
+    <!-- about -->
+    {{ partial "components/page-introduction-up" (dict "context" . "title" .Params.about.title "content" .Params.about.content "image" .Params.about.image  ) }}
+{{ end }}
+
+
+  <!-- Recrutement -->
+  {{ if .Params.recrutement.enable }}
+  {{ with .Params.recrutement }}
+  <section class="bg-lightgrey clip-bottom-white recrutement pt-5" id="recrutement">
+    <div class="container"><balise id="alternance">
+        {{ partial "components/wavy-title" (dict "context" . "title" "Vous recrutez ?") }}
+      </balise>
+      <div class="row row-eq-height">
+        {{ range .item }}
+          <div class="col-md-12 col-lg-6 mb-4">
+            <div class="card h-100 big-bottom-lg center-card {{ .color }} position-relative overflow-visible">
+              <div class="card-header">
+                <img
+                  class="card-img-top rounded-circle card-img-top team-image"
+                  src="{{.image}}"
+                  alt="Valérie"
+                >
+                <h3 class="title-medium {{.color}}">{{.title}}</h3>
+              </div>
+
+              <div>
+                <div class="card-body">
+                  <p class="shortenedText">
+                    {{.content | safeHTML }}
+                  </p>
+                  <div class="row">
+                    <div class="col-12 d-flex justify-content-center position-lg-absolute">
+                    <a href="/contact" class="btn font-weight-medium {{.color}} my-4 my-lg-3 py-3 px-5">{{.button}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+
+
+<!-- ColorBlock -->
+  {{ if .Params.colorBlock.enable }}
+  {{ with .Params.colorBlock }}
+  <section class="bg-white clip-bottom-lightgrey section overflow-hidden colorBlocks">
+    <div class="container pb-5">
+      <div class="row mb-5 py-lg-5 my-lg-5">
+        {{ range .item }}
+           <div class="col-md-12 col-lg-6 my-5 my-lg-0">
+            <div class="card big-bottom center-card colorBlock {{ .color }} h-100">
+              <div class="card-header">
+                <h3>{{.title}}</h3>
+              </div>
+              <div>
+                <div class="card-body">
+                  <p>
+                    {{.content | safeHTML}}
+                  </p>
+                  <a href="/contact" class="btn font-weight-medium pt-3 pb-3 px-4">{{.button}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+    <img src="/uploads/points.svg" class="points">
+  </section>
+  {{ end }}
+  {{ end }}
+
+{{ if .Params.testimonials.enable }}
+    {{ partial "testimonial-section.html" (dict "context" . "filter" (slice "entreprises") "padding" "pt-0" ) }}
+{{ end }}
+
+{{ if .Params.partners.enable }}
+{{ $collab := where .Site.RegularPages "Type" "in" "collaborateurs" }}
+
+<section class="bg-lightgrey section pt-0 d-none d-lg-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {{ with .Params.partners }}
+            <h3 class="text-center with-separator-lg-left text-lg-left title-medium color-orange my-5">
+                {{.title}}
+            </h3>
+          {{ end }}
+
+          <div class="row">
+            {{ range $collab }}
+              {{ partial "partner.html" . }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{{ with .Params.partners }}
+<section class="section pt-0 bg-lightgrey d-block d-lg-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div
+                        class="card-header"
+                    >
+                        <h3 class="mb-0 title-medium color-blue separator-left">
+                            {{.title}}
+                        </h3>
+                    </div>
+
+                    <div>
+                        <div class="card-body">
+                            <p class="mb-4">
+                                {{.subtitle}}
+                            </p>
+{{ end }}
+                       <!-- <div class="row">
+                              {{ range $collab }}
+                              <div class="col-6 my-5 d-flex justify-content-center align-items-center">
+                                <img src="{{ .Params.Image | relURL }}" alt="{{ .Params.Name }}" class="w-75 mx-auto">
+                              </div>
+                              {{ end }}
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-12 d-flex justify-content-center">
+                                <a href="" class="btn btn-outline font-weight-medium color-blue py-3 px-4">Afficher toutes les entreprises</a>
+                                </div>
+                            </div> -->
+                            {{ partial "getCollaborateurs.html" . }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ if .Params.partenariat.enable }}
+  <section class="clip-bottom-lightgrey section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+              <h3 class="text-center with-separator-lg-left text-lg-left title-medium color-orange my-5">
+                {{.Params.partenariat.title}}
+              </h3>
+
+                {{ $partners := where .Site.RegularPages "Type" "in" "partner" }}
+            <div class="row d-flex align-items-center justify-content-center">
+              {{ range $partners }}
+                {{ partial "partner.html" . }}
+              {{ end }}
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+<script>
+  const textWrappers = document.querySelectorAll(".shortenedText")
+
+  textWrappers.forEach(wrapper => {
+    let text = wrapper.innerHTML
+    if(text.length > 300) {
+      text = text.substring(0, 300);
+      text = text.replace(/\w+$/, '...');
+
+      text += '<a href="#" ' +
+              'onclick="this.parentNode.innerHTML=' +
+              'unescape(\''+escape(wrapper.innerHTML)+'\');return false;">' +
+              ' Lire tout<\/a>';
+      wrapper.innerHTML = text;
+    }
+  })
+</script>
+
+{{ end }}

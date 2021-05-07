@@ -1,0 +1,105 @@
+{{ define "main" }}
+
+<!-- hero area -->
+<section
+  class="hero-area overflow-hidden d-flex align-items-center"
+  id="parallax"
+  style="background-image: url('{{ .Params.banner.image | absURL }}')"
+>
+</section>
+<!-- /hero area -->
+{{ partial "components/page-title" (dict "context" . "title" .Params.banner.title "subtitle" .Params.banner.subtitle ) }}
+
+{{ if .Params.subjects.enable }} {{ with .Params.subjects }}
+<section
+  id="faq"
+  class="accordion-section bg-lightgrey"
+  aria-label="Question Accordions"
+>
+  <div class="container">
+    <div class="row">
+      {{ $.Scratch.Add "i" 0 }}
+      {{ range $subject, $el := .item }}
+        {{ $i := $.Scratch.Get "i" }}
+        <div class="col-md-12 mb-4">
+          <div class="card {{ if eq $i 0 }} second-push-top {{end}}">
+            <div class="card-header color-blue flex-column align-items-center">
+              <div class="row pb-lg-4 w-100">
+                <div class="col-12 text-center col-lg-2">
+                  <img
+                    class="card-img-top rounded-circle card-img-top team-image fit-cover"
+                    src="{{.image}}"
+                    alt="Valérie"
+                  />
+                </div>
+                <div class="col-12 text-center col-lg-10 text-lg-left">
+                  <h2 class="m-auto py-3 py-lg-0 title-medium title-medium-lg-left color-blue">{{.subject | safeHTML }}</h2>
+                  <p class="mb-4">{{.subtitle | safeHTML }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="container">
+              <div
+                class="panel-group"
+                id="accordion"
+                role="tablist"
+                aria-multiselectable="true"
+              >
+                {{ range $index, $value := .questions }}
+                <div class="panel panel-default mb-3">
+                  <div
+                    class="panel-heading py-2"
+                    role="tab"
+                    id="heading-{{$subject}}-{{$index}}"
+                  >
+                    <h3 class="panel-title">
+                      <a
+                        class="collapsed position-relative pr-5"
+                        role="button"
+                        title=""
+                        data-toggle="collapse"
+                        data-parent="#accordion"
+                        href="#collapse-{{$subject}}-{{$index}}"
+                        aria-expanded="true"
+                        aria-controls="collapse-{{$subject}}-{{$index}}"
+                      >
+                        {{.question | safeHTML }}
+                        <i class="fas fa-angle-down rotate-icon icon-faq"></i>
+                      </a>
+                    </h3>
+                  </div>
+                  <div
+                    id="collapse-{{$subject}}-{{$index}}"
+                    class="panel-collapse collapse"
+                    role="tabpanel"
+                    aria-labelledby="heading-{{$subject}}-{{$index}}"
+                  >
+                    <div class="panel-body mb-4">
+                      <p>{{.answer | safeHTML }}</p>
+                    </div>
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ $.Scratch.Add "i" 1 }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }} {{ end }}
+
+<section class="py-5 overflow-hidden bg-lightgrey">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <a href="/contact" class="btn font-weight-medium color-blue py-3 px-5"
+        >Vous avez encore des <br />
+        questions ?</a
+      >
+    </div>
+  </div>
+</section>
+{{ end }}

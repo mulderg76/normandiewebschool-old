@@ -1,0 +1,40 @@
+---
+label: Form
+hide_body: true
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: input
+  type: field_group_list
+  fields:
+  - name: icon
+    type: text
+    config:
+      required: false
+    label: Icon
+  - name: placeholder
+    type: text
+    config:
+      required: false
+    label: Placeholder
+  - name: required
+    type: boolean
+    label: Required
+  - name: name
+    type: text
+    config:
+      required: false
+    label: Name
+  - name: width
+    type: text
+    config:
+      required: false
+    label: Width
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: Input

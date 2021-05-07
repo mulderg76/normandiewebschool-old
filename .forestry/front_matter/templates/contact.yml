@@ -1,0 +1,25 @@
+---
+label: Contact
+hide_body: true
+fields:
+- type: text
+  name: global
+  label: global
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+- name: form
+  type: include
+  config: {}
+  template: form
+  label: Form

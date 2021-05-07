@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+/* TEAM */
+
+   Web developers: Maxence Machu / Théo Dieppois
+   Site: https://akarah.com
+   From: Rouen, France
+
+/* THANKS */
+
+   Humans.txt: http://humanstxt.org
+
+/* SITE */
+
+   Language: French
+   Standards: HTML5, CSS3
+   Doctype: HTML5
+   Software: HUGO

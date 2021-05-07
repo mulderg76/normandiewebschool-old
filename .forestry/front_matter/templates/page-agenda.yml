@@ -1,0 +1,84 @@
+---
+label: page-agenda
+hide_body: true
+fields:
+- type: text
+  name: L_agenda_de_la_NWS
+  label: Agenda
+- type: text
+  name: Page
+  label: Page
+- type: text
+  name: Le_calendrier_des_evenements
+  label: Le calendrier des événements
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: L_agenda_de_la_NWS
+    label: L'agenda de la NWS
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+  - type: file
+    name: localisation
+    label: Localisation
+- type: field_group
+  name: event
+  label: event
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title_first
+    label: title_first
+  - type: text
+    name: title_second
+    label: title_second
+  - type: field_group_list
+    name: month
+    label: month
+    fields:
+    - type: text
+      name: label
+      label: label
+    - type: field_group_list
+      name: item
+      label: item
+      fields:
+      - type: datetime
+        name: date
+        label: date
+        config:
+          date_format: DD/MM/YY
+          display_utc: false
+          time_format: " "
+          export_format: DD/MM/YY
+      - type: text
+        name: name
+        label: name
+      - type: text
+        name: localisation
+        label: Localisation
+      - type: text
+        name: start
+        label: start
+      - type: text
+        name: end
+        label: end
+      - type: text
+        name: href
+        label: href
+      - name: image
+        type: file
+        config:
+          maxSize: 64
+        label: image
+        default: "/uploads/116423205.jpg"
+pages:
+- content/agenda/_index.md

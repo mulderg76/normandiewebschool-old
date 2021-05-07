@@ -1,0 +1,59 @@
+---
+label: Information
+hide_body: true
+fields:
+- type: text
+  name: global
+  label: global
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+- type: field_group
+  name: form
+  label: form
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: subtitle
+    label: subtitle
+  - type: field_group_list
+    name: input
+    label: input
+    fields:
+    - type: text
+      name: icon
+      label: icon
+    - type: text
+      name: placeholder
+      label: placeholder
+    - type: text
+      name: type
+      label: type
+    - type: boolean
+      name: required
+      label: required
+  - type: field_group_list
+    name: checkbox
+    label: checkbox
+    fields:
+    - type: textarea
+      name: content
+      label: content
+    - type: boolean
+      name: required
+      label: required

@@ -1,0 +1,55 @@
+---
+label: Collaborateurs
+hide_body: true
+fields:
+- type: text
+  name: name
+  label: name
+- type: file
+  name: image
+  label: image
+pages:
+- content/collaborateurs/6ble.md
+- content/collaborateurs/Affinisep.md
+- content/collaborateurs/Akarah.md
+- content/collaborateurs/Appsy.md
+- content/collaborateurs/Aptar.md
+- content/collaborateurs/Axédia.md
+- content/collaborateurs/Ayonis.md
+- content/collaborateurs/BlackPandaStrategie.md
+- content/collaborateurs/Epnak.md
+- content/collaborateurs/FondationLesNids.md
+- content/collaborateurs/GoodJourney.md
+- content/collaborateurs/HaraelEditions.md
+- content/collaborateurs/IndelebileCreation.md
+- content/collaborateurs/Intermarche.md
+- content/collaborateurs/Keyveo.md
+- content/collaborateurs/KoalaME.md
+- content/collaborateurs/LaMaisonBerry.md
+- content/collaborateurs/LemasonnConsulting.md
+- content/collaborateurs/LesVasesCommunicants.md
+- content/collaborateurs/Ludivigne.md
+- content/collaborateurs/MaSolutionFormation.md
+- content/collaborateurs/Matmut.md
+- content/collaborateurs/MimOuna.md
+- content/collaborateurs/NoeCinemas.md
+- content/collaborateurs/Nomenk.md
+- content/collaborateurs/Noxeprim.md
+- content/collaborateurs/Oser Sa Chance.md
+- content/collaborateurs/RMCSImmobilier.md
+- content/collaborateurs/Ricoh.md
+- content/collaborateurs/RouenBouge.md
+- content/collaborateurs/RoyalDonuts.md
+- content/collaborateurs/SCJInformatique.md
+- content/collaborateurs/SFPerformance.md
+- content/collaborateurs/SSISystemes.md
+- content/collaborateurs/Sitefirst.md
+- content/collaborateurs/StageSottevillais.md
+- content/collaborateurs/StudioSavalle.md
+- content/collaborateurs/Themecloud.md
+- content/collaborateurs/TissInfo.md
+- content/collaborateurs/To Become.md
+- content/collaborateurs/UniLaSalle.md
+- content/collaborateurs/VPAuto.md
+- content/collaborateurs/VilleDeRouen.md
+- content/collaborateurs/Webedia.md

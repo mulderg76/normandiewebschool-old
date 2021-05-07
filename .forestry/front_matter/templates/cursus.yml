@@ -1,0 +1,147 @@
+---
+label: Cursus
+hide_body: true
+fields:
+- type: text
+  name: global
+  label: global
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+- type: field_group
+  name: about
+  label: about
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: content
+    label: content
+- type: field_group
+  name: filieres
+  label: filieres
+  fields:
+  - type: text
+    name: enable
+    label: enable
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: title
+      label: title
+    - type: textarea
+      name: content
+      label: content
+    - type: text
+      name: from
+      label: from
+    - type: text
+      name: to
+      label: to
+    - type: text
+      name: color
+      label: color
+- type: field_group
+  name: cursus
+  label: cursus
+  fields:
+  - type: text
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: subtitle
+    label: subtitle
+- type: field_group
+  name: reasons
+  label: reasons
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: file
+      name: logo
+      label: logo
+    - type: textarea
+      name: content
+      label: content
+    - type: text
+      name: alt
+      label: alt
+- type: field_group
+  name: data
+  label: data
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: number
+      name: number
+      label: number
+    - type: text
+      name: title
+      label: title
+- type: field_group
+  name: team
+  label: team
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: content
+    label: content
+- type: field_group
+  name: partners
+  label: partners
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+- type: field_group
+  name: testimonials
+  label: testimonials
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+pages:
+- content/cursus/_index.md

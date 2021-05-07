@@ -1,0 +1,70 @@
+{{ $team := where .Site.RegularPages "Type" "in" "team" }}
+
+<script>
+    window.onload = () => {
+        const data = []
+        {{range $team.ByWeight}}
+            data.push({
+                name: {{.Params.Name }},
+                image: {{ partial "snippets/img-srcset.html" (dict "image" .Params.Picture "alt" .Params.Name "width" "140" "resize" "140x q100 jpg" "class" "rounded-circle border-blue card-img-top team-image" ) }},
+                role: {{.Params.Role}},
+                permalink: {{.Permalink}}
+            })
+        {{end}}
+
+        let max = mobileCheck() ? 1 : 5;
+
+        const displayEvents = (max) => {
+            let html = ''
+            let lastIndex = 0
+            data.map((member, i) => {
+                if(i > max ) return
+                html = html + `<article class="col-lg-4 col-sm-6 mb-4 d-flex align-items-center flex-column">
+                                    ${member.image}
+                                    <div class="card-body text-center">
+                                        <h4 class="card-title mb-0">
+                                        <a class="color-grey">${member.name}</a>
+                                        </h4>
+                                        <p class="cars-text">${member.role}</p>
+                                    </div>
+                                </article>`
+                lastIndex = i
+            })
+
+            document.querySelector('#teams').innerHTML = html
+
+            if(lastIndex == data.length - 1) {
+                document.querySelector('#more').style.display = 'none'
+                max = data.length - 1
+            }
+        }
+        displayEvents(max)
+
+
+        document.querySelector('#more').addEventListener('click', () => {
+            allTeam()
+        })
+
+
+        const allTeam = () => {
+            max += data.length
+            displayEvents(max)
+        }
+    }
+</script>
+
+
+<div class="container pt-4">
+  <div id="teams" class="row"></div>
+  <div class="row mt-4">
+    <div class="col-12 d-flex justify-content-center">
+      <button
+        id="more"
+        class="btn btn-outline font-weight-medium color-blue py-3 px-5"
+      >
+    
+        Afficher toute l'équipe
+      </button>
+    </div>
+  </div>
+</div>

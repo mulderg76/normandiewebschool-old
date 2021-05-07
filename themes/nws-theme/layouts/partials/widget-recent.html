@@ -1,0 +1,10 @@
+<div class="card">
+    <div class="card-content">
+        <h2 class="mb-0 title-medium color-blue separator-left">Articles récents</h2>
+        {{ range first 7 (where .Site.RegularPages "Section" "post").ByPublishDate.Reverse }}
+            {{ $mymonths := index $.Site.Data.mois }}{{ .Date.Day }}
+            <time class="has-text-grey-light is-size-7">{{ index $mymonths (printf "%d" .Date.Month) }} {{ .Date.Year }}
+            <a href="{{ .Permalink | absURL }}">{{ .Title }}</a></br>
+        {{ end }}
+    </div>
+</div>

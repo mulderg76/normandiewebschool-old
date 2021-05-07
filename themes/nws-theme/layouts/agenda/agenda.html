@@ -1,0 +1,115 @@
+{{ define "main" }}
+
+<!-- hero area -->
+<section
+  class="hero-area overflow-hidden d-flex align-items-center"
+  id="parallax"
+  style="background-image: url('{{ .Params.banner.image | absURL }}')"
+></section>
+<!-- /hero area -->
+
+{{ partial "components/page-title" (dict "context" . "title" .Params.banner.title "subtitle" .Params.banner.subtitle ) }} 
+{{ if .Params.event.enable }} {{ with .Params.event }}
+<section class="bg-lightgrey pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8 mt-5 mt-lg-0 order-2 order-lg-1">
+        <div class="card second-push-top subForm">
+          <div class="card-header">
+              <h2 class="mb-0 title-medium color-blue separator-left">{{ .title_first }}</h2>
+          </div>
+          <div
+            class="card-body accordion-section clearfix"
+            aria-label="Question Accordions"
+          >
+            <div class="row">
+              <div class="col-md-12">
+                <div class="">
+                  {{range $index, $el := .month}}
+                  <div
+                    class="panel-group"
+                    id="accordion"
+                    role="tablist"
+                    aria-multiselectable="true"
+                  >
+                    <div class="panel panel-default mb-3">
+                      <div
+                        class="panel-heading py-2"
+                        role="tab"
+                        id="heading-{{$index}}"
+                      >
+                        <h3 class="panel-title">
+                          <a
+                            class="collapsed position-relative agenda  {{if eq (len .item) 0}} no-cursor {{end}}"
+                            role="button"
+                            title=""
+                            {{if gt (len .item) 0}}data-toggle="collapse"{{end}}
+                            data-parent="#accordion"
+                            href="#collapse-{{$index}}"
+                            aria-expanded="true"
+                            aria-controls="collapse-{{$index}}"
+                          >
+                            {{.label}} {{if gt (len .item) 0}}
+                            <span class="color-orange">({{ len .item }})</span>
+                            {{end}}
+                            <i class="fas fa-angle-down rotate-icon"></i>
+                          </a>
+                        </h3>
+                      </div>
+                      <div
+                        id="collapse-{{$index}}"
+                        class="panel-collapse collapse"
+                        role="tabpanel"
+                        aria-labelledby="heading-{{$index}}"
+                      >
+                        <div class="panel-body mb-4">
+                          <div class="container">
+                            {{range .item}}
+                            <a href="{{.href}}" rel="noopener" target="_blank" title="{{.name}}">
+                              <div class="row event mb-2">
+                                <div
+                                  class="date col-4 d-flex flex-column justify-content-center pl-0"
+                                >
+                                  <p class="font-weight-bold text-center">{{.date}}</p>
+                                  <p class="text-center">{{.start}} - {{.end}}</p>
+                                </div>
+                                <div
+                                  class="desc col-8 d-flex flex-column justify-content-center pr-0"
+                                >
+                                  <p class="font-weight-bold">{{.name}}</p>
+                                  <p>{{.localisation}}</p>
+                                </div>
+                              </div>
+                            </a>
+                            {{end}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-5 mt-lg-0 doc-section order-1 order-lg-2">
+        <div class="card second-push-top">
+          <div class="card-header">
+            <h3 class="mb-0 title-medium color-blue separator-left">{{ .title_second }}</h3>
+          </div>
+
+          <div>
+            <div class="card-body">
+              {{ partial "getEvents.html" . }}
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }} {{ end }} {{ end }}

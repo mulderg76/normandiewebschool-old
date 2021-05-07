@@ -1,0 +1,184 @@
+@import 'variables';
+
+//
+@media (min-width: 450px) {
+  .subfooter {
+    ul {
+      flex-direction: row;
+      li {
+        &:nth-child(2) {
+          border-left: 1px solid #fff !important;
+        }
+      }
+    }
+  }
+}
+
+//
+@media (min-width: 768px) {
+  .footer-lg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      'Info Info'
+      'Buttons Contact';
+  }
+}
+@media (max-width: 992px) {
+  .clip-top-white {
+    &:after {
+      clip-path: polygon(0 40%, 100% 20%, 100% 0, 0 0) !important;
+    }
+  }
+  #profession.clip-bottom-lightgrey{
+      &:after {
+        clip-path: polygon(0 40vh, 100% 20vh, 100% 100%, 0% 100%) !important;
+      }
+  }
+ 
+  .clip-bottom-lightgrey {
+    &:after {
+      height: 180px;
+      clip-path: polygon(0 100%, 100% 0%, 100% 100%, 0% 100%);
+    }
+  }
+}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .first-push-top {
+    margin-top: -18em;
+  }
+
+  .second-push-top {
+    margin-top: -5em;
+  }
+  .w-lg-20 {
+    width: 20%;
+  }
+
+  .with-separator-lg-center {
+    &:after {
+      left: calc(50%) !important;
+      transform: translateX(-50%);
+    }
+  }
+  .with-separator-lg-left {
+    &:after {
+      left: 0 !important;
+      margin-left: 0 !important;
+    }
+  }
+
+  .footer-lg-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'Contact Info Buttons';
+  }
+
+  .cursus_filieres {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: '. arrow-1 . arrow-2 .';
+
+    .arrow-1 {
+      grid-area: arrow-1;
+      transform: rotate(-90deg);
+      margin: 0 auto;
+    }
+
+    .arrow-2 {
+      grid-area: arrow-2;
+      transform: rotate(-90deg);
+      margin: 0 auto;
+    }
+  }
+
+  .filiere-intro {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    grid-template-rows: 0.3fr 1.7fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      'title logo'
+      'description logo';
+
+    .logo {
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      grid-area: logo;
+      width: 50%;
+      padding: 1em;
+    }
+
+    .title {
+      grid-area: title;
+    }
+
+    .description {
+      grid-area: description;
+    }
+  }
+
+  .profession p {
+    width: 100% !important;
+  }
+
+  .w-lg-50 {
+    width: 49% !important;
+  }
+  .w-lg-100 {
+    width: 100% !important;
+  }
+
+  .lg-no-padding {
+    padding: 0 !important;
+    margin-bottom: 0;
+  }
+
+  //[data-toggle='collapse']:not(.event) {
+  .hide-collapse-desktop {
+    pointer-events: none;
+    i {
+      display: none;
+    }
+  }
+
+  .lg-absolute {
+    position: absolute;
+  }
+
+  .bg-lg-lightgrey {
+    background-color: var(--lightgrey) !important;
+  }
+
+  .position-lg-absolute {
+    position: absolute !important;
+    bottom: 0;
+    transform: translateY(50%);
+  }
+
+  .title-medium-lg-left {
+    &.title-medium {
+      &:after {
+        margin: 0;
+        margin-top: 0.5em !important;
+        margin-bottom: 0.5em !important;
+        content: '';
+        left: 0;
+      }
+    }
+  }
+
+  #cursus {
+    /*min-height: 100Vh;*/ /*
+    background-image: url('/uploads/assets/desktop-cursus.svg');
+    background-size: contain;
+    background-position-y: center;
+    background-repeat: no-repeat!**!;*/
+  }
+}

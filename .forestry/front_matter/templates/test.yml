@@ -1,0 +1,214 @@
+---
+label: page-accueil
+hide_body: true
+fields:
+- type: datetime
+  name: date
+  label: date
+  hidden: true
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
+- type: field_group
+  name: banner
+  label: Bannière
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+  - type: file
+    name: image
+    label: image
+- type: field_group
+  name: about
+  label: A propos
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: file
+    name: image
+    label: image
+  - type: textarea
+    name: content
+    label: content
+    config:
+      wysiwyg: true
+      schema:
+        format: html-blocks
+- type: field_group
+  name: filieres
+  label: Filières
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - name: bachelor_titre
+    type: text
+    config:
+      required: false
+    label: Bachelor titre
+  - name: bachelor_description
+    type: textarea
+    default: ''
+    config:
+      required: false
+      wysiwyg: true
+      schema:
+        format: html-blocks
+    label: Bachelor description
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: title
+      label: title
+    - type: textarea
+      name: content
+      label: content
+    - type: text
+      name: from
+      label: from
+    - type: text
+      name: to
+      label: to
+    - type: text
+      name: color
+      label: color
+    - type: file
+      name: logo
+      label: logo
+    - type: text
+      name: href
+      label: href
+- type: field_group
+  name: video
+  label: Vidéo de présentation
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: url
+    label: url
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: content
+    label: content
+    config:
+      wysiwyg: true
+      schema:
+        format: html-blocks
+  - type: text
+    name: button
+    label: button
+  - type: text
+    name: href
+    label: href
+  - name: image
+    type: file
+    config:
+      maxSize: 64
+    label: image
+- type: field_group
+  name: cursus
+  label: Cursus
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: subtitle
+    label: subtitle
+- type: field_group
+  name: reasons
+  label: Raisons
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: textarea
+    name: title
+    label: title
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: file
+      name: logo
+      label: logo
+    - type: textarea
+      name: content
+      label: content
+    - type: text
+      name: alt
+      label: alt
+- type: field_group
+  name: data
+  label: data
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: text
+      name: number
+      label: number
+    - type: text
+      name: title
+      label: title
+- type: field_group
+  name: team
+  label: team
+  fields:
+  - type: text
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+  - type: textarea
+    name: content
+    label: content
+- type: field_group
+  name: partners
+  label: partners
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: text
+    name: title
+    label: title
+- type: field_group
+  name: testimonials
+  label: testimonials
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+pages:
+- content/_index.md

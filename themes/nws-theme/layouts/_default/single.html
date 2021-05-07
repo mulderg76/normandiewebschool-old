@@ -1,0 +1,20 @@
+{{ define "main" }}
+
+  {{ partial "page-title.html" . }}
+
+  <section class="bg-lightgrey pb-4 pt-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="font-tertiary mb-5">{{.Title}}</h1>
+	        <p class="subtitle is-size-6 has-text-grey-light">
+            <time class="has-text-grey-light is-size-7">Publié le {{ $mymonths := index $.Site.Data.mois }}{{ .Date.Day }}&nbsp;{{ index $mymonths (printf "%d" .Date.Month) }} {{ .Date.Year }}
+            </p>
+            <div class="content">
+            {{.Content }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{ end }}

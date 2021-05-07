@@ -1,0 +1,50 @@
+---
+label: Agenda
+hide_body: true
+fields:
+- type: text
+  name: global
+  label: global
+- type: field_group
+  name: banner
+  label: banner
+  fields:
+  - type: text
+    name: title
+    label: title
+  - type: text
+    name: title-line-twho
+    label: title-line-twho
+  - type: text
+    name: subtitle
+    label: subtitle
+- type: field_group
+  name: subjects
+  label: subjects
+  fields:
+  - type: boolean
+    name: enable
+    label: enable
+  - type: field_group_list
+    name: item
+    label: item
+    fields:
+    - type: file
+      name: image
+      label: image
+    - type: text
+      name: subject
+      label: subject
+    - type: textarea
+      name: subtitle
+      label: subtitle
+    - type: field_group_list
+      name: questions
+      label: questions
+      fields:
+      - type: text
+        name: question
+        label: question
+      - type: textarea
+        name: answer
+        label: answer

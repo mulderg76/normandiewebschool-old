@@ -1,0 +1,43 @@
+---
+label: Team
+hide_body: true
+fields:
+- name: name
+  type: text
+  config:
+    required: false
+  label: Name
+- name: picture
+  type: file
+  config:
+    maxSize: 64
+  label: Picture
+- name: role
+  type: text
+  config:
+    required: false
+  label: Role
+- name: type
+  type: text
+  config:
+    required: true
+  label: Type
+  hidden: true
+  default: team
+- name: weight
+  type: number
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+  label: Ordre
+pages:
+- content/team/chloe-vitry.md
+- content/team/fabien-ghesquiere.md
+- content/team/jean-claude.md
+- content/team/sabrina-morisse.md
+- content/team/sylvain-tenier.md
+- content/team/timothee-nguyen.md

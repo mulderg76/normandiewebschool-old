@@ -1,0 +1,23 @@
+---
+label: page-mentions_legales
+hide_body: true
+fields:
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
+- name: noindex
+  type: boolean
+  label: noindex
+  default: true
+  hidden: false
+- type: textarea
+  name: content
+  label: content
+  config:
+    wysiwyg: true
+    schema:
+      format: markdown
+pages:
+- content/mentions-legales/_index.md
