@@ -59,7 +59,7 @@
                           class="form-check-input"
                           id="checkbox-{{$index}}"
                           name="{{.name}}"
-                          {{ range $page := .Site.Data.{{ .Params.book }}.page_list }}
+                          {{ range $page := .Site.Data.{{ .Params.list }}.page_list }}
                           {{ $page }} 
                           {{ end }}
                           {{ if .required | eq true }} required="true" {{ end }}
