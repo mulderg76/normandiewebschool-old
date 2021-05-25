@@ -6,6 +6,20 @@ fields:
   type: text
   config:
     required: false
+    type: select
+name: category
+label: Category
+description: Select a category for this page
+hidden: false
+config:
+    source:
+      type: custom
+    options:
+        - "Bachelor Web Marketing"
+        - "Bachelor Web Développement"
+        - "Bachelor Web Design"
+        - "Bachelor Community Management"
+        - "Mastère Expert digital"
   label: Title
 - name: input
   type: field_group_list
