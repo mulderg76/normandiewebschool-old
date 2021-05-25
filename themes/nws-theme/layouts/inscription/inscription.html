@@ -60,9 +60,9 @@
                           id="checkbox-{{$index}}"
                           name="{{.name}}"
                           {{ range $list := .Site.Data.{{ .Params.list }}.page_list }}
-                          {{ $list }} 
-                          {{ end }}
+                          {{ $list }}
                           {{ if .required | eq true }} required="true" {{ end }}
+                          {{ end }}
                         />
                         <label class="form-check-label" for="checkbox-{{$index}}"
                           >{{.content}}</label
