@@ -28,6 +28,9 @@
               <form id="ajaxForm" name='inscription' action="https://getform.io/f/7ae989ac-d8da-4a1b-8dd3-b09a3b4d5910" method="POST" class="mt-3" >
                 <div class="form-group">
                   {{range .input}} {{if (not .textarea)}} 
+                  {{ range where .Pages "Section" "filiere" }}
+                  {{ .Content }}
+                  {{ end }}
                   <div class="input-icon mb-3 position-relative w-lg-{{ .width }} {{ .padding }} d-lg-inline-block">
                     <img src="{{.icon}}" alt="" class="icn-contact" />
                     <input
