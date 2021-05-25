@@ -59,6 +59,9 @@
                           class="form-check-input"
                           id="checkbox-{{$index}}"
                           name="{{.name}}"
+                          {{ range $page := .Site.Data.{{ .Params.book }}.page_list }}
+                          {{ $page }} 
+                          {{ end }}
                           {{ if .required | eq true }} required="true" {{ end }}
                         />
                         <label class="form-check-label" for="checkbox-{{$index}}"
